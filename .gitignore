@@ -1,1 +1,7 @@
+
 *.log
+node_modules/
+.idea/jsLinters/eslint.xml
+.idea/fst.iml
+.idea/libraries/
+.idea/workspace.xml
