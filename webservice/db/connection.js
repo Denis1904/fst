@@ -3,14 +3,8 @@
 	
 	let pool = null;
 	try {
-		pool = mysql.createPool({
-			host: "",
-			port: "3306",
-			connectionLimit: 10,
-			user: "",
-			password: "",
-			database: ""
-		});
+		const credentials = require("./credentials.js");
+		pool = mysql.createPool(credentials);
 	}
 	catch (oErr) {
 		logger.error("Failed to create database connection");
