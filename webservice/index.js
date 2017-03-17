@@ -1,16 +1,44 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *	Definition of global variables
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 const express = require("express");
+const argv = require("optimist").argv;
+
+/** @global */
+mysql = require("mysql");
+
 //noinspection Eslint
+/** @global */
 logger = require("eazy-logger").Logger({
-    prefix: "{blue:[}{magenta:FST_WS}{blue:] }",
-    useLevelPrefixes: true
+	prefix: "{blue:[}{magenta:FST_WS}{blue:] }",
+	useLevelPrefixes: true
 });
+
+/** @global */
 app = express();
 
+/** @global */
+db = require("./db/connection");
 
+/** @global */
+queries = require("./db/queries");
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *	Definition of routes
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 require("./routes/index");
 require("./routes/sayHello");
-app.set("port", process.env.PORT || 3000);
+require("./routes/404"); // should be always at the end of routes require block
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *	Fire up server
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+app.set("port", argv.port || 3000);
 const server = app.listen(app.get("port"), function() {
-    logger.info("Express server listening on port " + server.address().port);
+	"use strict";
+	
+	logger.info("Server listening on port " + server.address().port);
+	
 });
