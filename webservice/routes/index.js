@@ -9,7 +9,7 @@
 			"<style> body{ font-family: Arial; background-color: #f0f0f0} </style>" +
 			"</head>" +
 			"<h1>FST API - Welcome</h1> " +
-			"<ul><li><a href='/sayHello'>sayHello</a></li></ul>" +
+			"<ul><li><a href='#'>sayHello?name=TestParam</a></li></ul>" +
 			"</html>"
 		);
 	});

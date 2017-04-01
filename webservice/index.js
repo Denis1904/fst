@@ -17,6 +17,10 @@ logger = require("eazy-logger").Logger({
 /** @global */
 app = express();
 
+const bParser = require("body-parser");
+/** @global */
+bJson = bParser.json();
+
 /** @global */
 db = require("./db/connection");
 
