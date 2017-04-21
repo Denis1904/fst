@@ -13,7 +13,7 @@
 			var oBackButton = new sap.m.Button({
 				text: "Zurück",
 				icon: "sap-icon://arrow-left",
-				press: oController.handleButtonPress
+				press: oController.handleBackBtnPress
 			});
 
 

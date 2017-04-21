@@ -9,7 +9,7 @@
 		onInit: function () {
 
 		},
-		handleButtonPress: function () {
+		handleBackBtnPress: function () {
 			oRouter.navTo("start");
 		},
 		addNewButtonPress: function () {

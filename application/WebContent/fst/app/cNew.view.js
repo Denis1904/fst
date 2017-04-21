@@ -14,7 +14,7 @@
 
 			return new sap.m.Page({
 				showNavButton: true,
-				navButtonPress: oController.handleButtonPress,
+				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertrag anlegen",
 				enableScrolling: false,
 				content: []
