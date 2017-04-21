@@ -12,22 +12,14 @@
 
 		createContent: function (oController) {
 
-			//Back button
-			var oBackButton = new sap.m.Button({
-				text: "Zurück",
-				icon: "sap-icon://arrow-left",
-				press: oController.handleButtonPress
-			});
-
-			var page = new sap.m.Page({
-
+			return new sap.m.Page({
+				showNavButton: true,
+				navButtonPress: oController.handleButtonPress,
 				title: "Vertrag anlegen",
 				enableScrolling: false,
-				content: [oBackButton]
-
+				content: []
+				
 			});
-
-			return page;
 		}
 	});
 })();

@@ -12,22 +12,12 @@
 
 		createContent: function (oController) {
 
-			//Back button
-			var oBackButton = new sap.m.Button({
-				text: "Zurück",
-				icon: "sap-icon://arrow-left",
-				press: oController.handleButtonPress
-			});
-
 			//New contract button
 			var oNewButton = new sap.m.Button({
 				text: "Vertrag anlegen",
 				icon: "sap-icon://add-document",
 				press: oController.addNewButtonPress
 			});
-
-			//Spacer
-			var oSpacer = sap.m.ToolbarSeparator();
 
 			//Table body
 			var oTable = sap.m.Table({
@@ -110,10 +100,11 @@
 
 
 			var page = new sap.m.Page({
-
+				showNavButton: true,
+				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertragspflege",
 				enableScrolling: false,
-				content: [oBackButton, oSpacer, oNewButton, oTable]
+				content: [oNewButton, oTable]
 
 			});
 
