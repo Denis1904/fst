@@ -8,16 +8,30 @@
 		},
 
 		createContent: function (oController) {
-			return new sap.m.Page({
-				title: "Hallo",
-				content: new sap.m.Button({
-					icon: "sap-icon://nurse",
-					text: "Button",
-					press: oController.handleButtonPress
-				})
+
+			var tileContainer = new sap.m.TileContainer({
+				height: "50%",
+				tiles: [
+					new sap.m.StandardTile({
+						icon: "sap-icon://customer-and-supplier",
+						title: "Vertragspflege",
+						press: oController.handleButtonPress
+					}), new sap.m.StandardTile({
+						icon: "sap-icon://request",
+						title: "Vertragsvergleich",
+						press: oController.handleButtonPress
+					})]
 			});
+
+			var page = new sap.m.Page({
+
+				title: "Vendor Management Contract",
+				enableScrolling: false,
+				content: [tileContainer]
+
+			});
+
+			return page;
 		}
-
-
 	});
 })();

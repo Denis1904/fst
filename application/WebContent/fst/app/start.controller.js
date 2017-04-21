@@ -6,7 +6,12 @@
 
 		},
 		handleButtonPress: function () {
-			oRouter.navTo("test");
+			if (this.sId === "__tile0") {
+				oRouter.navTo("cEdit");
+			} else if (this.sId === "__tile1") {
+				oRouter.navTo("test");
+			}
+
 		}
 	});
 })();

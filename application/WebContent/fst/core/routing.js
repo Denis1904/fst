@@ -14,6 +14,11 @@ sap.ui.define([], function () {
 				pattern: "test",
 				target: "test",
 				parent: "home"
+			},
+			"cEdit": {
+				pattern: "cEdit",
+				target: "cEdit",
+				parent: "home"
 			}
 		},
 
@@ -24,6 +29,10 @@ sap.ui.define([], function () {
 			},
 			"test": {
 				viewName: "fst.app.test",
+				viewLevel: 1
+			},
+			"cEdit": {
+				viewName: "fst.app.cEdit",
 				viewLevel: 1
 			}
 		}
