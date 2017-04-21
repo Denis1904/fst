@@ -7,7 +7,7 @@
 		},
 		handleButtonPress: function () {
 			if (this.sId === "__tile0") {
-				oRouter.navTo("cEdit");
+				oRouter.navTo("cList");
 			} else if (this.sId === "__tile1") {
 				oRouter.navTo("test");
 			}

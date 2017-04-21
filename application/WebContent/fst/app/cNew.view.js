@@ -1,10 +1,13 @@
+/**
+ * Created by Denis on 21.04.2017.
+ */
 (function () {
 	"use strict";
 
-	sap.ui.jsview("fst.app.cEdit", {
+	sap.ui.jsview("fst.app.cNew", {
 
 		getControllerName: function () {
-			return "fst.app.cEdit";
+			return "fst.app.cNew";
 		},
 
 		createContent: function (oController) {
@@ -16,10 +19,9 @@
 				press: oController.handleButtonPress
 			});
 
-
 			var page = new sap.m.Page({
 
-				title: "Vertragspflege",
+				title: "Vertrag anlegen",
 				enableScrolling: false,
 				content: [oBackButton]
 

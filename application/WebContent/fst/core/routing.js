@@ -15,11 +15,21 @@ sap.ui.define([], function () {
 				target: "test",
 				parent: "home"
 			},
+			"cList": {
+				pattern: "cList",
+				target: "cList",
+				parent: "home"
+			},
+			"cNew": {
+				pattern: "cNew",
+				target: "cNew",
+				parent: "home"
+			},
 			"cEdit": {
 				pattern: "cEdit",
 				target: "cEdit",
 				parent: "home"
-			}
+			},
 		},
 
 		targets: {
@@ -29,6 +39,14 @@ sap.ui.define([], function () {
 			},
 			"test": {
 				viewName: "fst.app.test",
+				viewLevel: 1
+			},
+			"cList": {
+				viewName: "fst.app.cList",
+				viewLevel: 1
+			},
+			"cNew": {
+				viewName: "fst.app.cNew",
 				viewLevel: 1
 			},
 			"cEdit": {
