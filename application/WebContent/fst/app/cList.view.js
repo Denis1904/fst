@@ -16,7 +16,7 @@
 			let oBackButton = new sap.m.Button({
 				text: "Zurück",
 				icon: "sap-icon://arrow-left",
-				press: oController.handleButtonPress
+				press: oController.handleBackBtnPress
 			});
 
 			//New contract button
@@ -102,7 +102,7 @@
 			});
 			oTable.addColumn(col09);
 
-			let colItems = new sap.m.ColumnListItem("colItems", {
+			/*let colItems = new sap.m.ColumnListItem("colItems", {
 				type: "Active"
 			});
 			oTable.bindAggregation("items", "/value", colItems);
@@ -121,7 +121,7 @@
 				text: "{UnitsInStock}"
 			});
 			colItems.addCell(txtNAME3);
-
+			*/
 
 			let page = new sap.m.Page({
 
