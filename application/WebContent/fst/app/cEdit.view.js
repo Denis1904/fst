@@ -10,14 +10,14 @@
 		createContent: function (oController) {
 
 			//Back button
-			var oBackButton = new sap.m.Button({
+			let oBackButton = new sap.m.Button({
 				text: "Zurück",
 				icon: "sap-icon://arrow-left",
 				press: oController.handleBackBtnPress
 			});
 
 
-			var page = new sap.m.Page({
+			let page = new sap.m.Page({
 
 				title: "Vertragspflege",
 				enableScrolling: false,
