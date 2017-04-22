@@ -3,9 +3,10 @@
 	
 	const sRoute = "/sayHello";
 	
-	app.get(sRoute, bJson, function(req, res, next) {
+	app.post(sRoute, bJson, function(req, res, next) {
 		logger.info("Hit route " + sRoute + " Mode: POST");
 		res.set("Content-Type", "application/javascript");
+		res.header("Access-Control-Allow-Origin", "*");
 		
 		const sGetParam = req.query.name;
 		const oRequestBody = req.body;

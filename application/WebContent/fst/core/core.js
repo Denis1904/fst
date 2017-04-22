@@ -33,6 +33,9 @@
 		hasher.prependHash = "";
 
 		oRouter.initialize();
+		
+		jQuery.sap.require("fst.core.connectivity");
+		window.Connectivity = new fst.core.connectivity();
 
 	});
 

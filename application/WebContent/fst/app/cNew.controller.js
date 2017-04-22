@@ -6,7 +6,14 @@
 
 	sap.ui.controller("fst.app.cNew", {
 		onInit: function () {
-
+			
+			Connectivity.getTest().then(
+				aResponse => {
+					console.log(aResponse);
+				}
+			);
+			
+			
 		},
 		handleBackBtnPress: function () {
 			oRouter.navTo("cList");
