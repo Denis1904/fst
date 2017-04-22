@@ -9,29 +9,29 @@
 
 		createContent: function (oController) {
 
-			var tileContainer = new sap.m.TileContainer({
+			const oTileContainer = new sap.m.TileContainer({
 				height: "50%",
 				tiles: [
 					new sap.m.StandardTile({
 						icon: "sap-icon://customer-and-supplier",
 						title: "Vertragspflege",
-						press: oController.handleButtonPress
+						press: oController.handleContractMaintenancePress
 					}), new sap.m.StandardTile({
 						icon: "sap-icon://request",
 						title: "Vertragsvergleich",
-						press: oController.handleButtonPress
+						press: oController.handleCompareContractPress
 					})]
 			});
 
-			var page = new sap.m.Page({
+			const oPage = new sap.m.Page({
 
 				title: "Vendor Management Contract",
 				enableScrolling: false,
-				content: [tileContainer]
+				content: [oTileContainer]
 
 			});
 
-			return page;
+			return oPage;
 		}
 	});
 })();

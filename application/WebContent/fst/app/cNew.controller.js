@@ -8,7 +8,7 @@
 		onInit: function () {
 
 		},
-		handleButtonPress: function () {
+		handleBackBtnPress: function () {
 			oRouter.navTo("cList");
 		},
 		addNewButtonPress: function () {

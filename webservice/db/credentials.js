@@ -3,12 +3,12 @@
 	
 	//noinspection UnnecessaryLocalVariableJS
 	const credentials = {
-		host: "",
+		host: "sql.freemysqlhosting.net",
 		port: "3306",
 		connectionLimit: 10,
-		user: "",
-		password: "",
-		database: ""
+		user: "sql8169061",
+		password: "FAIw4aN86I",
+		database: "sql8169061"
 	};
 	
 	module.exports = credentials;
