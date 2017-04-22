@@ -7,7 +7,10 @@
 
 	sap.ui.controller("fst.app.cList", {
 		onInit: function () {
-
+           //Create a JSON Model
+			let oModel = new sap.ui.model.json.JSONModel({
+				greetingText: "wat ist das"
+			});
 		},
 		handleBackBtnPress: function () {
 			oRouter.navTo("start");
