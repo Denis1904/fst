@@ -20,6 +20,7 @@ app = express();
 const bParser = require("body-parser");
 /** @global */
 bJson = bParser.json();
+app.use(bParser.urlencoded({ extended: true }));
 
 /** @global */
 db = require("./db/connection");

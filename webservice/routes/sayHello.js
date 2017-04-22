@@ -10,10 +10,11 @@
 		
 		const sGetParam = req.query.name;
 		const oRequestBody = req.body;
+		logger.info("Body data: " + oRequestBody.hallo);
 		logger.info(JSON.stringify(oRequestBody, null, 2, 2) + sGetParam);
 		
 		queries.getTest().then(oResp => {
-				res.send({ [sGetParam]: oResp });
+				res.send({ [sGetParam]: oResp, "postData": oRequestBody });
 			}
 		);
 		
