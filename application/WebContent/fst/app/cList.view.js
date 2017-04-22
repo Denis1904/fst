@@ -124,10 +124,11 @@
 			*/
 
 			let page = new sap.m.Page({
-
+				showNavButton: true,
+				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertragspflege",
 				enableScrolling: false,
-				content: [oBackButton, oSpacer, oNewButton, oTable]
+				content: [oNewButton, oTable]
 
 			});
 
