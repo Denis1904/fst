@@ -47,7 +47,7 @@ sap.ui.define([], function () {
 			},
 			"cNew": {
 				viewName: "fst.app.cNew",
-				viewLevel: 1
+				viewLevel: 2
 			},
 			"cEdit": {
 				viewName: "fst.app.cEdit",
