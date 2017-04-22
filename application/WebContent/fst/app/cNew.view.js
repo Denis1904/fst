@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Created by Denis on 21.04.2017.
  */
@@ -17,11 +16,21 @@
 			let oBackButton = new sap.m.Button({
 				text: "Zurück",
 				icon: "sap-icon://arrow-left",
-				press: oController.handleButtonPress
+				press: oController.handleBackBtnPress
+			});
+
+			//New contract button
+			let oSaveButton = new sap.m.Button({
+				text: "Vertrag speichern",
+				icon: "sap-icon://save",
+				press: oController.saveButtonPress
 			});
 
 			//Spacer
-			let oSpacer = sap.m.ToolbarSeparator();
+			let oSpacer1 = new sap.m.ToolbarSeparator();
+
+			//Spacer
+			let oSpacer2 = new sap.m.ToolbarSeparator();
 
 			//Input List for new contract
 			let oValidFrom = new sap.m.DatePicker({
@@ -123,12 +132,11 @@
 			let page = new sap.m.Page({
 
 				title: "Vertrag anlegen",
-				enableScrolling: false,
-				content: [oBackButton, oSpacer, oValidFromLabel, oValidFrom,
-					oValidToLabel, oValidTo, oPayAgreementLabel, oPayAgreement,
-					oShipAgreementLabel, oShippAgreement, oPayGuaranteeLabel, oPayGuarantee,
-					oStatusLabel, oContractStatus, oCreatedLabel, oCreatedBy,
-					oReleasedLabel, oReleasedBy]
+				enableScrolling: true,
+				content: [oBackButton, oSpacer1, oSaveButton, oSpacer2, oValidFromLabel,
+					oValidFrom, oValidToLabel, oValidTo, oPayAgreementLabel, oPayAgreement,
+					oShipAgreementLabel, oShippAgreement, oPayGuaranteeLabel, oPayGuarantee, oStatusLabel,
+					oContractStatus, oCreatedLabel, oCreatedBy, oReleasedLabel, oReleasedBy]
 
 			});
 
@@ -136,30 +144,3 @@
 		}
 	});
 })();
-=======
-/**
- * Created by Denis on 21.04.2017.
- */
-(function () {
-	"use strict";
-
-	sap.ui.jsview("fst.app.cNew", {
-
-		getControllerName: function () {
-			return "fst.app.cNew";
-		},
-
-		createContent: function (oController) {
-
-			return new sap.m.Page({
-				showNavButton: true,
-				navButtonPress: oController.handleBackBtnPress,
-				title: "Vertrag anlegen",
-				enableScrolling: false,
-				content: []
-				
-			});
-		}
-	});
-})();
->>>>>>> origin/master

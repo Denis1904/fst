@@ -11,7 +11,7 @@
 		handleBackBtnPress: function () {
 			oRouter.navTo("cList");
 		},
-		addNewButtonPress: function () {
+		saveButtonPress: function () {
 			oRouter.navTo("start");
 		}
 	});
