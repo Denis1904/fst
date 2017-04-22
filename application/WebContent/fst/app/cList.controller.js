@@ -9,7 +9,7 @@
 		onInit: function () {
            //Create a JSON Model
 			let oModel = new sap.ui.model.json.JSONModel({
-				greetingText: "wat ist das"
+				greetingText: "wat ist das?"
 			});
 		},
 		handleBackBtnPress: function () {
