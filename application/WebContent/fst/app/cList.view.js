@@ -41,7 +41,8 @@
 						new sap.m.ToolbarSeparator(),
 						new sap.m.Button({
 							text: "Aktualisieren",
-							icon: "sap-icon://refresh"
+							icon: "sap-icon://refresh",
+							press: oController.loadContracts.bind(oController)
 						})
 					]
 				}),
