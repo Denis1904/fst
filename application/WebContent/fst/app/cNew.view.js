@@ -11,13 +11,14 @@
 		},
 
 		createContent: function (oController) {
-			
-			
+
+			this.setModel(new sap.ui.model.json.JSONModel());
+
 			//New contract button
 			let oSaveButton = new sap.m.Button({
 				text: "Vertrag speichern",
 				icon: "sap-icon://save",
-				press: oController.saveButtonPress
+				press: oController.saveButtonPress.bind(oController)
 			});
 			
 			//Spacer
@@ -25,31 +26,38 @@
 			
 			//Input List for new contract
 			let oValidFrom = new sap.m.DatePicker({
-				id: "validfrom",
+				id: "validFrom",
 				displayFormat: "short",
-				valueFormat: "dd-mm-yyyy"
+				valueFormat: "dd-mm-yyyy",
+				value: "{/validFrom}",
+				valueLiveUpdate: true
 			});
 			
 			let oValidFromLabel = new sap.m.Label({
 				text: "Vertrag gültig von:",
-				labelFor: "validfrom"
+				labelFor: "validFrom"
 			});
 			
 			let oValidTo = new sap.m.DatePicker({
-				id: "validto",
+				id: "validTo",
 				displayFormat: "short",
-				valueFormat: "dd-mm-yyyy"
+				valueFormat: "dd-mm-yyyy",
+				value: "{/validTo}",
+				valueLiveUpdate: true
 			});
 			
 			let oValidToLabel = new sap.m.Label({
 				text: "Vertrag gültig bis:",
-				labelFor: "validfto"
+				labelFor: "validTo"
 			});
 			
 			let oPayAgreement = new sap.m.Input({
 				id: "payAgreement",
 				showValueHelp: true,
-				showSuggestion: true
+				showSuggestion: true,
+				value: "{/payAgreement}",
+				valueLiveUpdate: true,
+				//valueHelpRequest: oController.handleValueHelp
 			});
 			
 			let oPayAgreementLabel = new sap.m.Label({
@@ -60,7 +68,9 @@
 			let oShippAgreement = new sap.m.Input({
 				id: "shippAgreement",
 				showValueHelp: true,
-				showSuggestion: true
+				showSuggestion: true,
+				value: "{/shippAgreement}",
+				valueLiveUpdate: true
 			});
 			
 			let oShipAgreementLabel = new sap.m.Label({
@@ -69,19 +79,23 @@
 			});
 			
 			let oPayGuarantee = sap.m.InputListItem({
-				id: "payguarantee",
-				content: new sap.m.Switch({})
+				id: "priceGuarantee",
+				content: new sap.m.Switch({}),
+				value: "{/priceGuarantee}",
+				valueLiveUpdate: true
 			});
 			
 			let oPayGuaranteeLabel = new sap.m.Label({
-				text: "Zahlungsgarantie",
-				labelFor: "payguarantee"
+				text: "Preisgarantie",
+				labelFor: "priceGuarantee"
 			});
 			
 			let oContractStatus = new sap.m.Input({
 				id: "status",
 				showValueHelp: true,
-				showSuggestion: true
+				showSuggestion: true,
+				value: "{/status}",
+				valueLiveUpdate: true
 			});
 			
 			let oStatusLabel = new sap.m.Label({
@@ -90,35 +104,30 @@
 			});
 			
 			let oCreatedBy = new sap.m.Input({
-				id: "createdby",
+				id: "createdBy",
 				showValueHelp: true,
-				showSuggestion: true
+				showSuggestion: true,
+				value: "{/createdBy}",
+				valueLiveUpdate: true
 			});
 			
 			let oCreatedLabel = new sap.m.Label({
 				text: "Angelegt von",
-				labelFor: "createdby"
+				labelFor: "createdBy"
 			});
 			
 			let oReleasedBy = new sap.m.Input({
-				id: "releasedby",
+				id: "releasedBy",
 				showValueHelp: true,
-				showSuggestion: true
+				showSuggestion: true,
+				value: "{/releasedBy}",
+				valueLiveUpdate: true
 			});
 			
 			let oReleasedLabel = new sap.m.Label({
 				text: "Freigegeben von",
-				labelFor: "releasedby"
+				labelFor: "releasedBy"
 			});
-			
-			/*
-			 let oInputList = sap.m.InputListItem({
-			 id: "id",
-			 label: "Vertrag gültig von",
-			 content: new sap.m.Input({})
-			 });
-			 */
-			
 			
 			return new sap.m.Page({
 				showNavButton: true,

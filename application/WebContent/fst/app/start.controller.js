@@ -7,7 +7,6 @@
 			oRouter.navTo("cList", { my: "data object passed into a route" });
 		},
 		
-		
 		handleCompareContractPress: function() {
 			oRouter.navTo("test");
 		}

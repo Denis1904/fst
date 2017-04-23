@@ -20,5 +20,17 @@
 			"left outer	join payagreement on contract.payagreement = payagreement.id");
 	};
 
+	Queries.addContracts = function (oContract) {
+
+		logger.info("Inhalt: " + oContract.validFrom + oContract.validTo);
+
+		return db.execQuery("INSERT INTO contract (validfrom, validto, payagreement, " +
+			"shippagreement, payguarantee, status, createdby, releasedby)" +
+			" VALUES (" + oContract.validFrom + ", " + oContract.validTo + ", 1, 1, 2, 1, 1, 1)");
+
+	};
+
 	module.exports = Queries;
 })();
+
+

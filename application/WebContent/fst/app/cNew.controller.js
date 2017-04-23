@@ -6,20 +6,24 @@
 
 	sap.ui.controller("fst.app.cNew", {
 		onInit: function () {
-			
-			Connectivity.getTest().then(
-				aResponse => {
-					console.log(aResponse);
-				}
-			);
-			
-			
+
 		},
 		handleBackBtnPress: function () {
 			oRouter.navTo("cList");
 		},
+
 		saveButtonPress: function () {
-			oRouter.navTo("start");
+
+			const oContract = this.getView().getModel().getData();
+
+			Connectivity.addContract(oContract).then(
+				aResponse => {
+					console.log(aResponse);
+
+				}
+			);
+			//oRouter.navTo("/addContracts");
 		}
+
 	});
 })();

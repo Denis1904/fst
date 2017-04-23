@@ -19,11 +19,12 @@
 
 	sRoute = "/addContract";
 
-	app.post(sRoute, bJson, function(req, res, next) {
+	app.post(sRoute, bJson, function (req, res, next) {
 		logger.info("Hit route " + sRoute + " Mode: POST");
 		res.set("Content-Type", "application/javascript");
+		const oContract = req.body;
 
-		queries.getContracts().then(oResp => {
+		queries.addContracts(oContract).then(oResp => {
 				res.send(oResp);
 			}
 		);

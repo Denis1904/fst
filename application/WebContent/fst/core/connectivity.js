@@ -40,7 +40,12 @@
 	};
 
 	fst.core.connectivity.prototype.getContracts = function () {
-		return this.__prepareModel("http://localhost:3000/contracts?name=TestParam", { sType: "GET" });
+		return this.__prepareModel("http://localhost:3000/contracts", { sType: "GET" });
 	};
+
+	fst.core.connectivity.prototype.addContract = function (oContract) {
+		return this.__prepareModel("http://localhost:3000/addContract", { sType: "POST", oBody: oContract });
+	};
+
 
 })();
