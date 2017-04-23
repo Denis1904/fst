@@ -1,18 +1,17 @@
-(function() {
+(function () {
 	"use strict";
-	
+
 	jQuery.sap.declare("fst.core.connectivity");
-	
-	fst.core.connectivity = function() {
-	
+
+	fst.core.connectivity = function () {
+
 	};
-	
+
 	fst.core.connectivity.prototype.__oModel = undefined;
-	
-	fst.core.connectivity.prototype.__prepareModel = function(sUrl, oOptions) {
+
+	fst.core.connectivity.prototype.__prepareModel = function (sUrl, oOptions) {
 		const sType = oOptions.sType || "GET";
 		const oBody = oOptions.oBody || null;
-		
 		return new Promise((fnResolve, fnReject) => {
 			this.__BusyDialog = new sap.m.BusyDialog({
 				title: "Daten werden geladen",
@@ -37,7 +36,11 @@
 	};
 	
 	fst.core.connectivity.prototype.getTest = function() {
-		return this.__prepareModel("http://localhost:3000/sayHello?name=TestParam", { sType: "POST", oBody: { hallo: "Welt" } });
+		return this.__prepareModel("http://localhost:3000/sayHello?name=TestParam", {sType: "POST", oBody: { hallo: "Welt" }});
 	};
-	
+
+	fst.core.connectivity.prototype.getContracts = function () {
+		return this.__prepareModel("http://localhost:3000/contracts?name=TestParam", { sType: "GET" });
+	};
+
 })();

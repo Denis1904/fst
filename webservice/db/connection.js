@@ -19,6 +19,7 @@
 				if (!err) {
 					connection.query(sQuery, function(error, results, fields) {
 						if (error) {
+							logger.error(error);
 							logger.error("select failed");
 							reject();
 						}

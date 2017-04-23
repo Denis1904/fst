@@ -1,4 +1,4 @@
-/**
+/*
  * Created by Denis on 21.04.2017.
  */
 (function () {
@@ -102,26 +102,55 @@
 			});
 			oTable.addColumn(col09);
 
-			/*let colItems = new sap.m.ColumnListItem("colItems", {
+			let colItems = new sap.m.ColumnListItem("colItems", {
 				type: "Active"
 			});
-			oTable.bindAggregation("items", "/value", colItems);
+			oTable.bindAggregation("items", "/", colItems);
 
 			let txtNAME = new sap.m.Text("txtNAME", {
-				text: "{ProductID}"
+				text: "{id}"
 			});
 			colItems.addCell(txtNAME);
 
 			let txtNAME2 = new sap.m.Text("txtNAME2", {
-				text: "{ProductName}"
+				text: "{validFrom}"
 			});
 			colItems.addCell(txtNAME2);
 
 			let txtNAME3 = new sap.m.Text("txtNAME3", {
-				text: "{UnitsInStock}"
+				text: "{validTo}"
 			});
 			colItems.addCell(txtNAME3);
-			*/
+
+			let txtNAME4 = new sap.m.Text("txtNAME4", {
+				text: "{payagreement}"
+			});
+			colItems.addCell(txtNAME4);
+
+			let txtNAME5 = new sap.m.Text("txtNAME5", {
+				text: "{shippagreement}"
+			});
+			colItems.addCell(txtNAME5);
+
+			let txtNAME6 = new sap.m.Text("txtNAME6", {
+				text: "{payguarantee}"
+			});
+			colItems.addCell(txtNAME6);
+
+			let txtNAME7 = new sap.m.Text("txtNAME7", {
+				text: "{contractStatus}"
+			});
+			colItems.addCell(txtNAME7);
+
+			let txtNAME8 = new sap.m.Text("txtNAME8", {
+				text: "{createdLastname}"
+			});
+			colItems.addCell(txtNAME8);
+
+			let txtNAME9 = new sap.m.Text("txtNAME9", {
+				text: "{releasedLastname}"
+			});
+			colItems.addCell(txtNAME9);
 
 			let page = new sap.m.Page({
 				showNavButton: true,

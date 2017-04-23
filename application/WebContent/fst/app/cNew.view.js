@@ -1,4 +1,4 @@
-/**
+/*
  * Created by Denis on 21.04.2017.
  */
 (function () {

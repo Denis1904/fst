@@ -42,6 +42,7 @@ app.use((req, res, next) => {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 require("./routes/index");
 require("./routes/sayHello");
+require("./routes/contracts");
 require("./routes/404"); // should be always at the end of routes require block
 
 

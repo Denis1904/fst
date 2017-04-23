@@ -4,18 +4,19 @@
 
 (function() {
 	"use strict";
-	
+
 	sap.ui.controller("fst.app.cList", {
-		onInit: function() {
-			oRouter.attachRouteMatchedWithData("cList", null, function(oEvent) {
-				const oData = oEvent.getParameter("data");
-				
-			});
-			
-			//Create a JSON Model
-			let oModel = new sap.ui.model.json.JSONModel({
-				greetingText: "wat ist das?"
-			});
+		onInit: function () {
+			Connectivity.getContracts().then(
+				aResponse => {
+					console.log(aResponse);
+
+					this.getView().setModel(
+						new sap.ui.model.json.JSONModel(aResponse)
+					);
+
+				});
+
 		},
 		handleBackBtnPress: function() {
 			oRouter.navTo("home");
