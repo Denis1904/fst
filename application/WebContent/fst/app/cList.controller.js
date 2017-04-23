@@ -8,19 +8,21 @@
 	sap.ui.controller("fst.app.cList", {
 		onInit: function() {
 			oRouter.attachRouteMatchedWithData("cList", () => {
-				Connectivity.getContracts().then(
-					aResponse => {
-						this.getView().setModel(
-							new sap.ui.model.json.JSONModel(aResponse)
-						);
-						
-					});
+				this.loadContracts();
 			});
 			
 		},
+		
+		loadContracts: function() {
+			Connectivity.getContracts().then(aResponse => {
+				this.getView().getModel().setData(aResponse);
+			});
+		},
+		
 		handleBackBtnPress: function() {
 			oRouter.navTo("home");
 		},
+		
 		addNewButtonPress: function() {
 			oRouter.navTo("cNew");
 		}
