@@ -16,8 +16,9 @@
 		 * Router for easy view handling and creation of urls for views
 		 */
 		jQuery.sap.require("fst.core.Routing");
+		jQuery.sap.require("fst.core.Router");
 
-		window.oRouter = new sap.m.routing.Router(
+		window.oRouter = new fst.core.Router(
 			/* global fst */
 			fst.core.Routing.routes,
 			{
