@@ -28,6 +28,14 @@ db = require("./db/connection");
 /** @global */
 queries = require("./db/queries");
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *	Global access control header
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+app.use((req, res, next) => {
+	"use strict";
+	res.header("Access-Control-Allow-Origin", "*");
+	next();
+});
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *	Definition of routes
