@@ -11,6 +11,9 @@
 			showLogout: false,
 			app: oApp
 		}).placeAt("content");
+		
+		jQuery.sap.require("fst.core.connectivity");
+		window.Connectivity = new fst.core.connectivity();
 
 		/**
 		 * Router for easy view handling and creation of urls for views
@@ -34,9 +37,6 @@
 		hasher.prependHash = "";
 
 		oRouter.initialize();
-		
-		jQuery.sap.require("fst.core.connectivity");
-		window.Connectivity = new fst.core.connectivity();
 
 	});
 

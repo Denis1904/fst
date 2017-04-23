@@ -37,6 +37,20 @@
 				
 				oRoute.attachEvent("afterMatched", oData, fnFunction, oListener);
 				return this;
+			},
+			
+			initialize: function() {
+				
+				this.attachEventOnce("routePatternMatched", function(oEvent) {
+					let oArgs = oEvent.getParameter("arguments");
+					
+					this.getRoute(oEvent.getParameter("name")).fireEvent("afterMatched", {
+						arguments: oArgs
+					});
+					
+				}, this);
+				
+				SapMRouter.prototype.initialize.call(this);
 			}
 			
 		};
