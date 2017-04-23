@@ -4,19 +4,19 @@
 
 (function() {
 	"use strict";
-
+	
 	sap.ui.controller("fst.app.cList", {
-		onInit: function () {
-			Connectivity.getContracts().then(
-				aResponse => {
-					console.log(aResponse);
-
-					this.getView().setModel(
-						new sap.ui.model.json.JSONModel(aResponse)
-					);
-
-				});
-
+		onInit: function() {
+			oRouter.attachRouteMatchedWithData("cList", () => {
+				Connectivity.getContracts().then(
+					aResponse => {
+						this.getView().setModel(
+							new sap.ui.model.json.JSONModel(aResponse)
+						);
+						
+					});
+			});
+			
 		},
 		handleBackBtnPress: function() {
 			oRouter.navTo("home");
