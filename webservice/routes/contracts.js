@@ -4,6 +4,11 @@
 (function() {
 	"use strict";
 
+	const Contract = require("../business/cntr");
+
+	let oContract = new Contract({ title: "huhu wie gehts" });
+	logger.info(oContract.getTitle());
+
 	let sRoute = "/contracts";
 
 	app.get(sRoute, bJson, function(req, res, next) {
