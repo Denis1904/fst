@@ -28,7 +28,7 @@
 		validate() {
 			const aReturn = [];
 			if (!(this.validFrom && Object.prototype.toString.call(this.validFrom) === "[object Date]")) {
-				aReturn.push("Gültig von wurde nicht geplfegt.");
+				aReturn.push({ title: "Gültig von wurde nicht geplfegt.", description: "Lorem ipsum dolor", type: "E" });
 			}
 
 			return aReturn;
