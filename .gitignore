@@ -8,3 +8,4 @@
 /webservice/node_modules/
 /application/node_modules/
 /webservice/db/credentials.js
+/application/.idea/modules.xml
