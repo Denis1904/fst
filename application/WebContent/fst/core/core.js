@@ -8,6 +8,10 @@
 		jQuery.sap.registerResourcePath("libs", "/fst/libs");
 		jQuery.sap.require("libs.lodash");
 		
+		window.oBundle = new sap.ui.model.resource.ResourceModel({
+			bundleName: "fst.i18n.i18n"
+		}).getResourceBundle();
+		
 		const oApp = new sap.m.App("fst.app");
 		
 		new sap.m.Shell({

@@ -14,8 +14,8 @@
 		const oBody = _.get(oOptions, "oBody", null);
 		return new Promise((fnResolve, fnReject) => {
 			this.__BusyDialog = new sap.m.BusyDialog({
-				title: "Daten werden geladen",
-				text: sLoadingText || "bitte warten"
+				title: oBundle.getText("std.isLoading"),
+				text: sLoadingText || oBundle.getText("std.pleaseWait")
 			});
 			this.__oModel = new sap.ui.model.json.JSONModel();
 			this.__oModel.attachRequestSent(() => {
@@ -31,17 +31,17 @@
 				this.__BusyDialog.close();
 				fnReject(oData);
 			});
-			sUrl = this.__serviceUrl + sUrl;
+			sUrl = _.join([this.__serviceUrl, sUrl], "");
 			this.__oModel.loadData(sUrl, oBody, false, sType, false, false);
 		});
 	};
 	
 	fst.core.connectivity.prototype.getContracts = function() {
-		return this.__loadData("contracts", "Verträge werden geladen");
+		return this.__loadData("contracts", oBundle.getText("contract.loading.multiple"));
 	};
 	
 	fst.core.connectivity.prototype.addContract = function(oContract) {
-		return this.__loadData("addContract", "Vertrag wird gespeichert", {
+		return this.__loadData("addContract", oBundle.getText("contract.saving"), {
 			sType: "POST",
 			oBody: oContract
 		});
