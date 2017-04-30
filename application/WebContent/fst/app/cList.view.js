@@ -22,7 +22,7 @@
 			
 			//New contract button
 			let oNewButton = new sap.m.Button({
-				text: "Vertrag anlegen",
+				text: "Hinzufügen",
 				icon: "sap-icon://add-document",
 				press: oController.addNewButtonPress
 			});
@@ -32,10 +32,8 @@
 				insert: true,
 				headerToolbar: new sap.m.OverflowToolbar({
 					content: [
-						new sap.m.Title({text: "Vertragsliste"}),
+						new sap.m.Title({ text: "Vertragsliste" }),
 						new sap.m.ToolbarSpacer(),
-						oNewButton,
-						new sap.m.ToolbarSeparator(),
 						new sap.m.Button({
 							text: "Aktualisieren",
 							icon: "sap-icon://refresh",
@@ -43,7 +41,7 @@
 						})
 					]
 				}),
-				mode: sap.m.ListMode.None,
+				mode: sap.m.ListMode.SingleSelectMaster,
 				includeItemInSelection: false
 			});
 			
@@ -160,17 +158,30 @@
 				text: "{releasedLastname}"
 			});
 			colItems.addCell(txtNAME9);
-			
-			let page = new sap.m.Page({
+
+			return new sap.m.Page({
 				showNavButton: true,
 				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertragspflege",
-				enableScrolling: false,
-				content: [oTable]
+				enableScrolling: true,
+				content: oTable,
+				footer: new sap.m.OverflowToolbar({
+					content: [
+						new sap.m.Button({
+							text: "Status ändern",
+							icon: "sap-icon://journey-change"
+						}),
+						new sap.m.ToolbarSpacer(),
+						oNewButton,
+						new sap.m.Button({
+							text: "Bearbeiten",
+							icon: "sap-icon://edit"
+						}),
+						new sap.m.ToolbarSpacer()
+					]
+				})
 				
 			});
-			
-			return page;
 		}
 	});
 })();
