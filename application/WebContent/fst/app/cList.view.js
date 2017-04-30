@@ -27,11 +27,8 @@
 				press: oController.addNewButtonPress
 			});
 			
-			//Spacer
-			let oSpacer = sap.m.ToolbarSeparator();
-			
 			//Table body
-			let oTable = sap.m.Table({
+			let oTable = new sap.m.Table({
 				insert: true,
 				headerToolbar: new sap.m.OverflowToolbar({
 					content: [
