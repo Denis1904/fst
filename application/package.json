@@ -1,28 +1,29 @@
 {
-  "name": "fst",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
-  "main": "gruntfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Denis1904/fst.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Denis1904/fst/issues"
-  },
-  "homepage": "https://github.com/Denis1904/fst#readme",
-  "devDependencies": {
-    "eslint": "^3.17.0",
-    "grunt": "^1.0.1",
-    "grunt-connect-proxy2": "^2.0.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "load-grunt-tasks": "^3.5.2",
-    "serve-static": "^1.12.1"
-  }
+	"name": "fst",
+	"version": "1.0.0",
+	"description": "",
+	"private": true,
+	"main": "gruntfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Denis1904/fst.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Denis1904/fst/issues"
+	},
+	"homepage": "https://github.com/Denis1904/fst#readme",
+	"devDependencies": {
+		"eslint": "^3.17.0",
+		"grunt": "^1.0.1",
+		"grunt-cli": "^1.2.0",
+		"grunt-connect-proxy2": "^2.0.0",
+		"grunt-contrib-connect": "^1.0.2",
+		"load-grunt-tasks": "^3.5.2",
+		"serve-static": "^1.12.1"
+	}
 }
