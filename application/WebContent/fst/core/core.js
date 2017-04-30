@@ -1,12 +1,15 @@
 (function() {
 	"use strict";
-
-	sap.ui.getCore().attachInit(function () {
-
+	
+	sap.ui.getCore().attachInit(function() {
+		
 		sap.ui.localResources("fst");
-
+		
+		jQuery.sap.registerResourcePath("libs", "/fst/libs");
+		jQuery.sap.require("libs.lodash");
+		
 		const oApp = new sap.m.App("fst.app");
-
+		
 		new sap.m.Shell({
 			showLogout: false,
 			app: oApp
@@ -14,13 +17,13 @@
 		
 		jQuery.sap.require("fst.core.connectivity");
 		window.Connectivity = new fst.core.connectivity();
-
+		
 		/**
 		 * Router for easy view handling and creation of urls for views
 		 */
 		jQuery.sap.require("fst.core.Routing");
 		jQuery.sap.require("fst.core.Router");
-
+		
 		window.oRouter = new fst.core.Router(
 			/* global fst */
 			fst.core.Routing.routes,
@@ -32,12 +35,12 @@
 			null,
 			fst.core.Routing.targets
 		);
-
+		
 		jQuery.sap.require("sap.ui.thirdparty.hasher");
 		hasher.prependHash = "";
-
+		
 		oRouter.initialize();
-
+		
 	});
-
+	
 })();
