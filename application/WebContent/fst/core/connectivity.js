@@ -1,21 +1,21 @@
-(function () {
+(function() {
 	"use strict";
-
+	
 	jQuery.sap.declare("fst.core.connectivity");
-
-	fst.core.connectivity = function () {
-
-	};
-
+	
+	fst.core.connectivity = function() {};
+	
 	fst.core.connectivity.prototype.__oModel = undefined;
-
-	fst.core.connectivity.prototype.__prepareModel = function (sUrl, oOptions) {
-		const sType = oOptions.sType || "GET";
-		const oBody = oOptions.oBody || null;
+	
+	fst.core.connectivity.prototype.__serviceUrl = "http://localhost:3000/";
+	
+	fst.core.connectivity.prototype.__loadData = function(sUrl, sLoadingText, oOptions) {
+		const sType = _.get(oOptions, "sType", "GET");
+		const oBody = _.get(oOptions, "oBody", null);
 		return new Promise((fnResolve, fnReject) => {
 			this.__BusyDialog = new sap.m.BusyDialog({
 				title: "Daten werden geladen",
-				text: "bla..."
+				text: sLoadingText || "bitte warten"
 			});
 			this.__oModel = new sap.ui.model.json.JSONModel();
 			this.__oModel.attachRequestSent(() => {
@@ -31,21 +31,21 @@
 				this.__BusyDialog.close();
 				fnReject(oData);
 			});
+			sUrl = this.__serviceUrl + sUrl;
 			this.__oModel.loadData(sUrl, oBody, false, sType, false, false);
 		});
 	};
 	
-	fst.core.connectivity.prototype.getTest = function() {
-		return this.__prepareModel("http://localhost:3000/sayHello?name=TestParam", {sType: "POST", oBody: { hallo: "Welt" }});
+	fst.core.connectivity.prototype.getContracts = function() {
+		return this.__loadData("contracts", "Verträge werden geladen");
 	};
-
-	fst.core.connectivity.prototype.getContracts = function () {
-		return this.__prepareModel("http://localhost:3000/contracts", { sType: "GET" });
+	
+	fst.core.connectivity.prototype.addContract = function(oContract) {
+		return this.__loadData("addContract", "Vertrag wird gespeichert", {
+			sType: "POST",
+			oBody: oContract
+		});
 	};
-
-	fst.core.connectivity.prototype.addContract = function (oContract) {
-		return this.__prepareModel("http://localhost:3000/addContract", { sType: "POST", oBody: oContract });
-	};
-
-
+	
+	
 })();
