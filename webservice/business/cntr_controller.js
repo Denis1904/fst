@@ -14,6 +14,19 @@
 				return null;
 			}
 		}
+		
+		getAllowedStatus(sContractId) {
+			return [
+				{
+					status: "1",
+					text: "Neu"
+				},
+				{
+					status: "2",
+					text: "In Vorbereitung"
+				}
+			];
+		}
 
 
 	}

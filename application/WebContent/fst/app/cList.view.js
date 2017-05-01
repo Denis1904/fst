@@ -14,7 +14,6 @@
 			this.setModel(new sap.ui.model.json.JSONModel());
 			
 			this.oTable = new sap.m.Table({
-				insert: true,
 				headerToolbar: new sap.m.OverflowToolbar({
 					content: [
 						new sap.m.Title({ text: "Vertragsliste" }),
@@ -27,7 +26,6 @@
 					]
 				}),
 				mode: sap.m.ListMode.SingleSelectMaster,
-				includeItemInSelection: false,
 				selectionChange: oController.checkEnabledButtons.bind(oController)
 			});
 			
@@ -148,7 +146,8 @@
 			this.oBtnChangeStatus = new sap.m.Button({
 				text: "Status ändern",
 				icon: "sap-icon://journey-change",
-				visible: false
+				visible: false,
+				press: oController.handleStatusChange.bind(oController)
 			});
 			
 			this.oBtnEdit = new sap.m.Button({

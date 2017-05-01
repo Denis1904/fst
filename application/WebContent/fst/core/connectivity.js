@@ -47,5 +47,12 @@
 		});
 	};
 	
+	fst.core.connectivity.prototype.getAllowedStatus = function(sContractId) {
+		return this.__loadData("getAllowedStatus", oBundle.getText("contract.loading.multiple"), {
+			sType: "POST",
+			oBody: { id: sContractId }
+		});
+	};
+	
 	
 })();

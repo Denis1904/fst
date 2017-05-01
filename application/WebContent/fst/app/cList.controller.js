@@ -26,14 +26,34 @@
 			oRouter.navTo("cNew");
 		},
 		
+		getSelectedContractObject: function(oController) {
+			const oView = oController.getView();
+			const oSelection = oView.oTable.getSelectedItem();
+			return oSelection.getBindingContext().getObject();
+		},
+		
 		checkEnabledButtons: function() {
 			const oView = this.getView();
-			const oSelection = oView.oTable.getSelectedItem();
-			const oContractObject = oSelection.getBindingContext().getObject();
+			const oContractObject = this.getSelectedContractObject(this);
 			
 			[oView.oBtnChangeStatus, oView.oBtnEdit].forEach(e => e.setVisible(!!oContractObject));
 			
+		},
+		
+		handleStatusChange: function(oEvent) {
+			const oBtn = oEvent.getSource();
+			const oContractObject = this.getSelectedContractObject(this);
+			
+			if (oContractObject) {
+				Connectivity.getAllowedStatus(oContractObject.id).then(e => {
+					new sap.m.Popover({
+						content: []
+					}).openBy(oBtn);
+				});
+			}
+			
 		}
+		
 	});
 })();
 
