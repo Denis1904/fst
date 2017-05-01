@@ -10,7 +10,6 @@
 			oRouter.attachRouteMatchedWithData("cList", () => {
 				this.loadContracts();
 			});
-			
 		},
 		
 		loadContracts: function() {

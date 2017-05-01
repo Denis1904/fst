@@ -9,3 +9,4 @@
 /application/node_modules/
 /webservice/db/credentials.js
 /application/.idea/modules.xml
+/.idea/jsLibraryMappings.xml
