@@ -54,6 +54,12 @@
 		
 	};
 	
+	Queries.updateContract = function(oContract) {
+		/** TODO add proper abstraction layer for db access here and clean up this horrible file
+			thinking of https://www.npmjs.com/package/node-dal#update
+		 */
+	};
+	
 	module.exports = Queries;
 })();
 
