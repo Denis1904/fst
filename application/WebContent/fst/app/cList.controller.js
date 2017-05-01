@@ -25,6 +25,15 @@
 		
 		addNewButtonPress: function() {
 			oRouter.navTo("cNew");
+		},
+		
+		checkEnabledButtons: function() {
+			const oView = this.getView();
+			const oSelection = oView.oTable.getSelectedItem();
+			const oContractObject = oSelection.getBindingContext().getObject();
+			
+			[oView.oBtnChangeStatus, oView.oBtnEdit].forEach(e => e.setVisible(!!oContractObject));
+			
 		}
 	});
 })();

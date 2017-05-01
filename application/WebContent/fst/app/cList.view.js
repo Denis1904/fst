@@ -13,22 +13,7 @@
 		createContent: function(oController) {
 			this.setModel(new sap.ui.model.json.JSONModel());
 			
-			//Back button
-			let oBackButton = new sap.m.Button({
-				text: "Zurück",
-				icon: "sap-icon://arrow-left",
-				press: oController.handleBackBtnPress
-			});
-			
-			//New contract button
-			let oNewButton = new sap.m.Button({
-				text: "Hinzufügen",
-				icon: "sap-icon://add-document",
-				press: oController.addNewButtonPress
-			});
-			
-			//Table body
-			let oTable = new sap.m.Table({
+			this.oTable = new sap.m.Table({
 				insert: true,
 				headerToolbar: new sap.m.OverflowToolbar({
 					content: [
@@ -42,7 +27,8 @@
 					]
 				}),
 				mode: sap.m.ListMode.SingleSelectMaster,
-				includeItemInSelection: false
+				includeItemInSelection: false,
+				selectionChange: oController.checkEnabledButtons.bind(oController)
 			});
 			
 			//Columns
@@ -51,68 +37,68 @@
 					text: "Vertragsnummer"
 				})
 			});
-			oTable.addColumn(col01);
+			this.oTable.addColumn(col01);
 			
 			let col02 = new sap.m.Column("col02", {
 				header: new sap.m.Label({
 					text: "Gültig von"
 				})
 			});
-			oTable.addColumn(col02);
+			this.oTable.addColumn(col02);
 			
 			let col03 = new sap.m.Column("col03", {
 				header: new sap.m.Label({
 					text: "Gültig bis"
 				})
 			});
-			oTable.addColumn(col03);
+			this.oTable.addColumn(col03);
 			
 			let col04 = new sap.m.Column("col04", {
 				header: new sap.m.Label({
 					text: "Zahlungskondition"
 				})
 			});
-			oTable.addColumn(col04);
+			this.oTable.addColumn(col04);
 			
 			let col05 = new sap.m.Column("col05", {
 				header: new sap.m.Label({
 					text: "Lieferkondition"
 				})
 			});
-			oTable.addColumn(col05);
+			this.oTable.addColumn(col05);
 			
 			let col06 = new sap.m.Column("col06", {
 				header: new sap.m.Label({
 					text: "Zahlungsgarantie"
 				})
 			});
-			oTable.addColumn(col06);
+			this.oTable.addColumn(col06);
 			
 			let col07 = new sap.m.Column("col07", {
 				header: new sap.m.Label({
 					text: "Status"
 				})
 			});
-			oTable.addColumn(col07);
+			this.oTable.addColumn(col07);
 			
 			let col08 = new sap.m.Column("col08", {
 				header: new sap.m.Label({
 					text: "Angelegt von"
 				})
 			});
-			oTable.addColumn(col08);
+			this.oTable.addColumn(col08);
 			
 			let col09 = new sap.m.Column("col09", {
 				header: new sap.m.Label({
 					text: "Freigegeben von"
 				})
 			});
-			oTable.addColumn(col09);
+			this.oTable.addColumn(col09);
 			
 			let colItems = new sap.m.ColumnListItem("colItems", {
 				type: "Active"
 			});
-			oTable.bindAggregation("items", "/", colItems);
+			this.oTable.bindAggregation("items", "/", colItems);
 			
 			let txtNAME = new sap.m.Text("txtNAME", {
 				text: "{id}"
@@ -158,25 +144,37 @@
 				text: "{releasedLastname}"
 			});
 			colItems.addCell(txtNAME9);
-
+			
+			this.oBtnChangeStatus = new sap.m.Button({
+				text: "Status ändern",
+				icon: "sap-icon://journey-change",
+				visible: false
+			});
+			
+			this.oBtnEdit = new sap.m.Button({
+				text: "Bearbeiten",
+				icon: "sap-icon://edit",
+				visible: false
+			});
+			
+			 this.oBtnNew = new sap.m.Button({
+				text: "Hinzufügen",
+				icon: "sap-icon://add-document",
+				press: oController.addNewButtonPress
+			});
+			
 			return new sap.m.Page({
 				showNavButton: true,
 				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertragspflege",
 				enableScrolling: true,
-				content: oTable,
+				content: this.oTable,
 				footer: new sap.m.OverflowToolbar({
 					content: [
-						new sap.m.Button({
-							text: "Status ändern",
-							icon: "sap-icon://journey-change"
-						}),
+						this.oBtnChangeStatus,
 						new sap.m.ToolbarSpacer(),
-						oNewButton,
-						new sap.m.Button({
-							text: "Bearbeiten",
-							icon: "sap-icon://edit"
-						}),
+						this.oBtnNew,
+						this.oBtnEdit,
 						new sap.m.ToolbarSpacer()
 					]
 				})
