@@ -3,6 +3,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 const express = require("express");
 const argv = require("optimist").argv;
+_ = require("lodash");
 
 /** @global */
 mysql = require("mysql");
