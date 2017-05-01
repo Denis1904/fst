@@ -46,9 +46,8 @@
 			
 			if (oContractObject) {
 				Connectivity.getAllowedStatus(oContractObject.id).then(e => {
-					new sap.m.Popover({
-						content: []
-					}).openBy(oBtn);
+					this.getView().oStatusPopover.openBy(oBtn)
+						.setModel(new sap.ui.model.json.JSONModel(e));
 				});
 			}
 			

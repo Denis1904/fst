@@ -13,13 +13,28 @@
 		createContent: function(oController) {
 			this.setModel(new sap.ui.model.json.JSONModel());
 			
+			this.oStatusPopover = new sap.m.Popover({
+				title: oBundle.getText("contract.changeStatus"),
+				placement: sap.m.PlacementType.Top,
+				contentMinWidth: "300px",
+				content: new sap.m.List({
+					mode: sap.m.ListMode.SingleSelectMaster
+				}).bindItems({
+					path: "/",
+					template: new sap.m.StandardListItem({
+						title: "{text}",
+						description: "{status}"
+					})
+				})
+			});
+			
 			this.oTable = new sap.m.Table({
 				headerToolbar: new sap.m.OverflowToolbar({
 					content: [
-						new sap.m.Title({ text: "Vertragsliste" }),
+						new sap.m.Title({ text: oBundle.getText("contract.list") }),
 						new sap.m.ToolbarSpacer(),
 						new sap.m.Button({
-							text: "Aktualisieren",
+							text: oBundle.getText("std.refresh"),
 							icon: "sap-icon://refresh",
 							press: oController.loadContracts.bind(oController)
 						})
@@ -32,21 +47,21 @@
 			//Columns
 			let col01 = new sap.m.Column("col01", {
 				header: new sap.m.Label({
-					text: "Vertragsnummer"
+					text: oBundle.getText("contract.id")
 				})
 			});
 			this.oTable.addColumn(col01);
 			
 			let col02 = new sap.m.Column("col02", {
 				header: new sap.m.Label({
-					text: "Gültig von"
+					text: oBundle.getText("std.validFrom")
 				})
 			});
 			this.oTable.addColumn(col02);
 			
 			let col03 = new sap.m.Column("col03", {
 				header: new sap.m.Label({
-					text: "Gültig bis"
+					text: oBundle.getText("std.validTo")
 				})
 			});
 			this.oTable.addColumn(col03);
@@ -74,21 +89,21 @@
 			
 			let col07 = new sap.m.Column("col07", {
 				header: new sap.m.Label({
-					text: "Status"
+					text: oBundle.getText("contract.Status")
 				})
 			});
 			this.oTable.addColumn(col07);
 			
 			let col08 = new sap.m.Column("col08", {
 				header: new sap.m.Label({
-					text: "Angelegt von"
+					text: oBundle.getText("std.createdBy")
 				})
 			});
 			this.oTable.addColumn(col08);
 			
 			let col09 = new sap.m.Column("col09", {
 				header: new sap.m.Label({
-					text: "Freigegeben von"
+					text: oBundle.getText("std.releasedBy")
 				})
 			});
 			this.oTable.addColumn(col09);
@@ -144,20 +159,20 @@
 			colItems.addCell(txtNAME9);
 			
 			this.oBtnChangeStatus = new sap.m.Button({
-				text: "Status ändern",
+				text: oBundle.getText("contract.changeStatus"),
 				icon: "sap-icon://journey-change",
 				visible: false,
 				press: oController.handleStatusChange.bind(oController)
 			});
 			
 			this.oBtnEdit = new sap.m.Button({
-				text: "Bearbeiten",
+				text: oBundle.getText("std.edit"),
 				icon: "sap-icon://edit",
 				visible: false
 			});
 			
-			 this.oBtnNew = new sap.m.Button({
-				text: "Hinzufügen",
+			this.oBtnNew = new sap.m.Button({
+				text: oBundle.getText("std.new"),
 				icon: "sap-icon://add-document",
 				press: oController.addNewButtonPress
 			});
@@ -165,7 +180,7 @@
 			return new sap.m.Page({
 				showNavButton: true,
 				navButtonPress: oController.handleBackBtnPress,
-				title: "Vertragspflege",
+				title: oBundle.getText("contract.maintenance"),
 				enableScrolling: true,
 				content: this.oTable,
 				footer: new sap.m.OverflowToolbar({
