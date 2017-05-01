@@ -9,6 +9,7 @@
 		jQuery.sap.require("libs.lodash");
 		
 		window.oBundle = new sap.ui.model.resource.ResourceModel({
+			// bundleLocale: "EN",
 			bundleName: "fst.i18n.i18n"
 		}).getResourceBundle();
 		
