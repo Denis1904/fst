@@ -17,6 +17,7 @@ logger = require("eazy-logger").Logger({
 
 /** @global */
 app = express();
+const i18n = require("i18n");
 
 const bParser = require("body-parser");
 /** @global */
@@ -37,6 +38,19 @@ app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	next();
 });
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *	Default: using 'accept-language' header to guess language settings
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+i18n.configure({
+	directory: "./webservice/i18n",
+	register: global,
+	defaultLocale: "en",
+	api: {
+		"__": "__getText"
+	}
+});
+app.use(i18n.init);
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *	Definition of routes

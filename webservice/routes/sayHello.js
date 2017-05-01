@@ -3,6 +3,10 @@
 	
 	const sRoute = "/sayHello";
 	
+	app.get(sRoute, function(req, res, next) {
+		res.send(__getText("std.test"));
+	});
+	
 	app.post(sRoute, bJson, function(req, res, next) {
 		logger.info("Hit route " + sRoute + " Mode: POST");
 		res.set("Content-Type", "application/javascript");
@@ -13,7 +17,10 @@
 		logger.info(JSON.stringify(oRequestBody, null, 2, 2) + sGetParam);
 		
 		queries.getTest().then(oResp => {
-				res.send({ [sGetParam]: oResp, "postData": oRequestBody });
+				res.send({
+					[sGetParam]: oResp,
+					"postData": oRequestBody
+				});
 			}
 		);
 		
