@@ -13,6 +13,9 @@
 				if (oContract.title) {
 					this.title = oContract.title;
 				}
+				if (oContract.status) {
+					this.status = oContract.status;
+				}
 			}
 
 		}
@@ -24,7 +27,15 @@
 		setTitle(sTitle) {
 			this.title = sTitle;
 		}
-
+		
+		setStatus(sStatus) {
+			this.status = sStatus;
+		}
+		
+		getStatus() {
+			return this.status;
+		}
+		
 		validate() {
 			const aReturn = [];
 			if (!(this.validFrom && Object.prototype.toString.call(this.validFrom) === "[object Date]")) {
