@@ -1,3 +1,9 @@
 {
-	"std.test": "Hello"
+	"std.test": "Hello",
+	"contract.status.new": "New",
+	"contract.status.inValidation": "In validation",
+	"contract.status.active": "Active",
+	"contract.status.terminated": "Terminated",
+	"contract.statusChangeNotAllowed.Descr": "The status change from status {{oldStatus}} into {{newStatus}} is not allowed!",
+	"contract.statusChangeNotAllowed": "The status change is not allowed"
 }

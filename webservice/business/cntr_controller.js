@@ -27,19 +27,19 @@
 			return [
 				{
 					status: "1",
-					text: "Neu"
+					text: __getText("contract.status.new")
 				},
 				{
 					status: "2",
-					text: "In Prüfung"
+					text: __getText("contract.status.inValidation")
 				},
 				{
 					status: "3",
-					text: "Aktiv"
+					text: __getText("contract.status.active")
 				},
 				{
 					status: "4",
-					text: "Gekündigt"
+					text: __getText("contract.status.terminated")
 				}
 			];
 		}
@@ -56,10 +56,9 @@
 					const aReturn = [];
 					
 					if (oContract.getStatus().toString() === sNewStatus) {
-						let sDescr = "Der Statuswechel vom Status " + oContract.getStatus() + " in den Status " + sNewStatus +
-									 " ist nicht erlaubt!";
+						let sDescr = __getText("contract.statusChangeNotAllowed.Descr", { oldStatus: oContract.getStatus(), newStatus: sNewStatus });
 						aReturn.push({
-							title: "Der Statuswechsel ist nicht erlaubt!",
+							title: __getText("contract.statusChangeNotAllowed"),
 							description: sDescr,
 							type: "E"
 						});
