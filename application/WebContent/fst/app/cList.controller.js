@@ -51,6 +51,30 @@
 				});
 			}
 			
+		},
+		
+		handleNewStatusSelected: function(oEvent) {
+			const oList = oEvent.getSource();
+			const sNewStatus = oList.getSelectedItem().getDescription();
+			const oContractObject = this.getSelectedContractObject(this);
+			
+			oList.removeSelections();
+			oList.getParent().close(); // close popover
+			
+			Connectivity.changeContractStatus(oContractObject.id, sNewStatus).then(aReturn => {
+				
+				if (!_.isEmpty(aReturn)) {
+					jQuery.sap.require("fst.util.messagePopoverItemTemplate");
+					const oMP = new sap.m.MessagePopover({
+						items: {
+							path: "/",
+							template: fst.util.MessagePopoverItemTemplate
+						}
+					});
+					oMP.setModel(new sap.ui.model.json.JSONModel(aReturn));
+					oMP.openBy(this.getView().oBtnChangeStatus);
+				}
+			});
 		}
 		
 	});

@@ -54,5 +54,12 @@
 		});
 	};
 	
+	fst.core.connectivity.prototype.changeContractStatus = function(sContractId, sNewStatus) {
+		return this.__loadData("changeContractStatus", oBundle.getText("contract.loading.multiple"), {
+			sType: "POST",
+			oBody: { id: sContractId, status: sNewStatus }
+		});
+	};
+	
 	
 })();

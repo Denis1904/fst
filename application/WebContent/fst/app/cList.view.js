@@ -18,7 +18,8 @@
 				placement: sap.m.PlacementType.Top,
 				contentMinWidth: "300px",
 				content: new sap.m.List({
-					mode: sap.m.ListMode.SingleSelectMaster
+					mode: sap.m.ListMode.SingleSelectMaster,
+					selectionChange: oController.handleNewStatusSelected.bind(oController)
 				}).bindItems({
 					path: "/",
 					template: new sap.m.StandardListItem({
