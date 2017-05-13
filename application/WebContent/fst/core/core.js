@@ -13,6 +13,10 @@
 			bundleName: "fst.i18n.i18n"
 		}).getResourceBundle();
 		
+		window.dateFormatter = sap.ui.core.format.DateFormat.getDateTimeInstance({
+			pattern: "dd.MM.yyyy" //"yyyy-MM-dd"
+		});
+		
 		const oApp = new sap.m.App("fst.app");
 		
 		new sap.m.Shell({
