@@ -32,7 +32,7 @@
 	};
 	
 	Queries.getContracts = function() {
-		return db.execQuery("select contract.id, contract.validFrom,contract.validTo," +
+		return db.execQuery("select contract.id, contract.title, contract.validFrom,contract.validTo," +
 							"contract.payguarantee, contractstatus.value as contractStatus," +
 							"createdby.lastname as createdLastname,releasedby.lastname as releasedLastname," +
 							"shippagreement.name as shippagreement, payagreement.name as payagreement " +

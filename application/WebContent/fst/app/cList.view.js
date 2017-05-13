@@ -53,6 +53,13 @@
 			});
 			this.oTable.addColumn(col01);
 			
+			let colTitle = new sap.m.Column({
+				header: new sap.m.Label({
+					text: oBundle.getText("contract.title")
+				})
+			});
+			this.oTable.addColumn(colTitle);
+			
 			let col02 = new sap.m.Column("col02", {
 				header: new sap.m.Label({
 					text: oBundle.getText("std.validFrom")
@@ -119,13 +126,22 @@
 			});
 			colItems.addCell(txtNAME);
 			
+			let title = new sap.m.Text({
+				text: "{title}"
+			});
+			colItems.addCell(title);
+			
 			let txtNAME2 = new sap.m.Text("txtNAME2", {
-				text: "{validFrom}"
+				text: { path: "validFrom", formatter: sDate => {
+					return dateFormatter.format(new Date(sDate));
+				} }
 			});
 			colItems.addCell(txtNAME2);
 			
 			let txtNAME3 = new sap.m.Text("txtNAME3", {
-				text: "{validTo}"
+				text: { path: "validTo", formatter: sDate => {
+					return dateFormatter.format(new Date(sDate));
+				} }
 			});
 			colItems.addCell(txtNAME3);
 			
