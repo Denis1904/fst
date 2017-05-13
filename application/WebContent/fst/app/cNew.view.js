@@ -1,19 +1,19 @@
 /*
  * Created by Denis on 21.04.2017.
  */
-(function () {
+(function() {
 	"use strict";
-
+	
 	sap.ui.jsview("fst.app.cNew", {
-
-		getControllerName: function () {
+		
+		getControllerName: function() {
 			return "fst.app.cNew";
 		},
-
-		createContent: function (oController) {
-
+		
+		createContent: function(oController) {
+			
 			this.setModel(new sap.ui.model.json.JSONModel());
-
+			
 			//New contract button
 			let oSaveButton = new sap.m.Button({
 				text: "Vertrag speichern",
@@ -78,12 +78,7 @@
 				labelFor: "shippAgreement"
 			});
 			
-			let oPayGuarantee = sap.m.InputListItem({
-				id: "priceGuarantee",
-				content: new sap.m.Switch({}),
-				value: "{/priceGuarantee}",
-				valueLiveUpdate: true
-			});
+			let oPayGuarantee = new sap.m.Switch({state: "{/priceGuarantee}"});
 			
 			let oPayGuaranteeLabel = new sap.m.Label({
 				text: "Preisgarantie",
@@ -129,16 +124,66 @@
 				labelFor: "releasedBy"
 			});
 			
+			this.fnCreateBlockLayoutCell = function(aContent) {
+				const aLayoutCell = [];
+				
+				aContent.forEach(a => {
+					aLayoutCell.push(new sap.ui.layout.BlockLayoutCell({
+						content: a
+					}));
+					
+				});
+				
+				return aLayoutCell;
+			};
+			
+			const oBlockLayout = new sap.ui.layout.BlockLayout({
+				content: [
+					new sap.ui.layout.BlockLayoutRow({
+						content: this.fnCreateBlockLayoutCell([
+							[
+								oValidFromLabel,
+								oValidFrom,
+								oValidToLabel,
+								oValidTo
+							],
+							[
+								oPayAgreementLabel,
+								oPayAgreement,
+								oShipAgreementLabel,
+								oShippAgreement,
+								new sap.ui.layout.VerticalLayout({
+									content: [
+										oPayGuaranteeLabel,
+										oPayGuarantee
+									]
+								})
+							]
+						])
+					}),
+					new sap.ui.layout.BlockLayoutRow({
+						content: this.fnCreateBlockLayoutCell([
+							[
+								oStatusLabel,
+								oContractStatus
+							]
+						])
+					})
+				]
+			});
+			
 			return new sap.m.Page({
 				showNavButton: true,
 				navButtonPress: oController.handleBackBtnPress,
 				title: "Vertrag anlegen",
 				enableScrolling: true,
-				content: [oSaveButton, oSpacer2, oValidFromLabel,
-					oValidFrom, oValidToLabel, oValidTo, oPayAgreementLabel, oPayAgreement,
-					oShipAgreementLabel, oShippAgreement, oPayGuaranteeLabel, oPayGuarantee, oStatusLabel,
-					oContractStatus, oCreatedLabel, oCreatedBy, oReleasedLabel, oReleasedBy]
-
+				content: oBlockLayout,
+				footer: new sap.m.OverflowToolbar({ content: [new sap.m.ToolbarSpacer(), oSaveButton, new sap.m.ToolbarSpacer()] })
+				// content: [oSaveButton, oSpacer2, oValidFromLabel,
+				// 	oValidFrom, oValidToLabel, oValidTo, oPayAgreementLabel, oPayAgreement,
+				// 	oShipAgreementLabel, oShippAgreement, oPayGuaranteeLabel, oPayGuarantee, oStatusLabel,
+				// 	oContractStatus, oCreatedLabel, oCreatedBy, oReleasedLabel, oReleasedBy]
+				
 			});
 		}
 	});
