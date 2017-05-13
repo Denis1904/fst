@@ -47,6 +47,7 @@
 			
 			//Columns
 			let col01 = new sap.m.Column("col01", {
+				width: "2.5rem",
 				header: new sap.m.Label({
 					text: oBundle.getText("contract.id")
 				})
@@ -61,6 +62,7 @@
 			this.oTable.addColumn(colTitle);
 			
 			let col02 = new sap.m.Column("col02", {
+				width: "5rem",
 				header: new sap.m.Label({
 					text: oBundle.getText("std.validFrom")
 				})
@@ -68,6 +70,7 @@
 			this.oTable.addColumn(col02);
 			
 			let col03 = new sap.m.Column("col03", {
+				width: "5rem",
 				header: new sap.m.Label({
 					text: oBundle.getText("std.validTo")
 				})
@@ -96,6 +99,7 @@
 			this.oTable.addColumn(col06);
 			
 			let col07 = new sap.m.Column("col07", {
+				width: "5rem",
 				header: new sap.m.Label({
 					text: oBundle.getText("contract.Status")
 				})
