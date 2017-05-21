@@ -3,11 +3,11 @@
 	
 	const sRoute = "/sayHello";
 	
-	app.get(sRoute, function(req, res, next) {
+	app.post(sRoute, function(req, res, next) {
 		res.send(__getText("std.test"));
 	});
 	
-	app.post(sRoute, bJson, function(req, res, next) {
+	app.get(sRoute, bJson, function(req, res, next) {
 		logger.info("Hit route " + sRoute + " Mode: POST");
 		res.set("Content-Type", "application/javascript");
 		

@@ -1,44 +1,28 @@
 (function() {
 	"use strict";
 	
-	let pool = null;
-	try {
-		const credentials = require("./credentials.js");
-		pool = mysql.createPool(credentials);
-	}
-	catch (oErr) {
-		logger.error("Failed to create database connection");
-	}
+	/**
+	 * 	Nodetrine DBAL
+	 * 	Database abstraction layer
+	 * 	@see Documentation: http://nodetrine.github.io/dbal/latest/index.html
+	 * 	@see Repository: https://github.com/nodetrine/dbal
+	 */
 	
-	const fnExecQuery = function(sQuery) {
-		
-		return new Promise((resolve, reject) => {
-			
-			db.pool.getConnection((err, connection) => {
-				
-				if (!err) {
-					connection.query(sQuery, function(error, results, fields) {
-						if (error) {
-							logger.error(error);
-							logger.error("select failed");
-							reject();
-						}
-						resolve(results);
-						
-					});
-					connection.release();
-				}
-				else {
-					logger.error("Error");
-					logger.error(err);
-				}
-			});
-			
-		});
-		
+	const dbal = require("nodetrine-dbal");
+	const DriverManager = dbal.DriverManager;
+	
+	const credentials = require("./credentials.js");
+	const connection = DriverManager.getConnection(credentials);
+	
+	const fnGetConnection = function() {
+		return DriverManager.getConnection(credentials);
 	};
 	
-	module.exports.pool = pool;
-	module.exports.execQuery = fnExecQuery;
+	const fnGetQB = function() {
+		return new dbal.QueryBuilder.QueryBuilder(fnGetConnection());
+	};
 	
+	module.exports.dbal = dbal;
+	module.exports.connection = connection;
+	module.exports.queryBuilder = fnGetQB;
 })();

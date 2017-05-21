@@ -12,7 +12,7 @@
 		res.set("Content-Type", "application/javascript");
 		
 		queries.getContracts().then(oResp => {
-				res.send(oResp);
+				res.send(oResp.rows);
 			}
 		);
 		
