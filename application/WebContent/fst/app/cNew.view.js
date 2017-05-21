@@ -28,7 +28,7 @@
 			let oValidFrom = new sap.m.DatePicker({
 				id: "validFrom",
 				displayFormat: "short",
-				valueFormat: "dd-mm-yyyy",
+				valueFormat: "yyyy-MM-dd",
 				value: "{/validFrom}",
 				valueLiveUpdate: true
 			});
@@ -41,7 +41,7 @@
 			let oValidTo = new sap.m.DatePicker({
 				id: "validTo",
 				displayFormat: "short",
-				valueFormat: "dd-mm-yyyy",
+				valueFormat: "yyyy-MM-dd",
 				value: "{/validTo}",
 				valueLiveUpdate: true
 			});
