@@ -21,8 +21,49 @@
 				press: oController.saveButtonPress.bind(oController)
 			});
 			
-			//Spacer
-			let oSpacer2 = new sap.m.ToolbarSeparator();
+			let oLableTitle = new sap.m.Label({
+				text: "Titel:"
+			});
+			let oTitleContract = new sap.m.Input({
+				value: "{/title}"
+			});
+			
+			let oLabelCreatedBy = new sap.m.Label({
+				text: "Angelegt von:"
+			});
+			let oCreatedBy = new sap.m.Input({
+				value: "{createdBy}",
+				enabled: false
+			});
+			
+			let oLabelCreatedOn = new sap.m.Label({
+				text: "Angelegt am:"
+			});
+			let oCreatedOn = new sap.m.DatePicker({
+				displayFormat: "short",
+				valueFormat: "yyyy-MM-dd",
+				value: "{/createdOn}",
+				enabled: false
+			});
+			
+			
+			let oLabelReleasedBy = new sap.m.Label({
+				text: "Freigeben von:"
+			});
+			let oReleasedBy = new sap.m.Input({
+				value: "{releasedBy}",
+				enabled: false
+			});
+			
+			let oLabelReleasedOn = new sap.m.Label({
+				text: "Freigegeben am:"
+			});
+			let oReleasedOn = new sap.m.DatePicker({
+				displayFormat: "short",
+				valueFormat: "yyyy-MM-dd",
+				value: "{/createdOn}",
+				enabled: false
+			});
 			
 			//Input List for new contract
 			let oValidFrom = new sap.m.DatePicker({
@@ -56,7 +97,7 @@
 				showValueHelp: true,
 				showSuggestion: true,
 				value: "{/payAgreement}",
-				valueLiveUpdate: true,
+				valueLiveUpdate: true
 				//valueHelpRequest: oController.handleValueHelp
 			});
 			
@@ -78,7 +119,7 @@
 				labelFor: "shippAgreement"
 			});
 			
-			let oPayGuarantee = new sap.m.Switch({state: "{/priceGuarantee}"});
+			let oPayGuarantee = new sap.m.Switch({ state: "{/priceGuarantee}" });
 			
 			let oPayGuaranteeLabel = new sap.m.Label({
 				text: "Preisgarantie",
@@ -96,32 +137,6 @@
 			let oStatusLabel = new sap.m.Label({
 				text: "Vertragsstatus",
 				labelFor: "status"
-			});
-			
-			let oCreatedBy = new sap.m.Input({
-				id: "createdBy",
-				showValueHelp: true,
-				showSuggestion: true,
-				value: "{/createdBy}",
-				valueLiveUpdate: true
-			});
-			
-			let oCreatedLabel = new sap.m.Label({
-				text: "Angelegt von",
-				labelFor: "createdBy"
-			});
-			
-			let oReleasedBy = new sap.m.Input({
-				id: "releasedBy",
-				showValueHelp: true,
-				showSuggestion: true,
-				value: "{/releasedBy}",
-				valueLiveUpdate: true
-			});
-			
-			let oReleasedLabel = new sap.m.Label({
-				text: "Freigegeben von",
-				labelFor: "releasedBy"
 			});
 			
 			this.fnCreateBlockLayoutCell = function(aContent) {
@@ -142,11 +157,37 @@
 					new sap.ui.layout.BlockLayoutRow({
 						content: this.fnCreateBlockLayoutCell([
 							[
+								oLableTitle,
+								oTitleContract,
+								oStatusLabel,
+								oContractStatus
+							],
+							[
 								oValidFromLabel,
 								oValidFrom,
 								oValidToLabel,
 								oValidTo
+							]
+						])
+					}),
+					new sap.ui.layout.BlockLayoutRow({
+						content: this.fnCreateBlockLayoutCell([
+							[
+								oLabelCreatedBy,
+								oCreatedBy,
+								oLabelCreatedOn,
+								oCreatedOn
 							],
+							[
+								oLabelReleasedBy,
+								oReleasedBy,
+								oLabelReleasedOn,
+								oReleasedOn
+							]
+						])
+					}),
+					new sap.ui.layout.BlockLayoutRow({
+						content: this.fnCreateBlockLayoutCell([
 							[
 								oPayAgreementLabel,
 								oPayAgreement,
@@ -160,14 +201,6 @@
 								})
 							]
 						])
-					}),
-					new sap.ui.layout.BlockLayoutRow({
-						content: this.fnCreateBlockLayoutCell([
-							[
-								oStatusLabel,
-								oContractStatus
-							]
-						])
 					})
 				]
 			});
@@ -178,12 +211,9 @@
 				title: "Vertrag anlegen",
 				enableScrolling: true,
 				content: oBlockLayout,
-				footer: new sap.m.OverflowToolbar({ content: [new sap.m.ToolbarSpacer(), oSaveButton, new sap.m.ToolbarSpacer()] })
-				// content: [oSaveButton, oSpacer2, oValidFromLabel,
-				// 	oValidFrom, oValidToLabel, oValidTo, oPayAgreementLabel, oPayAgreement,
-				// 	oShipAgreementLabel, oShippAgreement, oPayGuaranteeLabel, oPayGuarantee, oStatusLabel,
-				// 	oContractStatus, oCreatedLabel, oCreatedBy, oReleasedLabel, oReleasedBy]
-				
+				footer: new sap.m.OverflowToolbar({ content: [
+					new sap.m.ToolbarSpacer(), oSaveButton, new sap.m.ToolbarSpacer()
+				] })
 			});
 		}
 	});

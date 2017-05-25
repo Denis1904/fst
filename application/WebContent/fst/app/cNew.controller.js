@@ -22,7 +22,6 @@
 
 				}
 			);
-			//oRouter.navTo("/addContracts");
 		}
 
 	});
