@@ -25,6 +25,8 @@
 		},
 		
 		handleLogout: function() {
+			sessionStorage.removeItem("USER");
+			sessionStorage.removeItem("HASH");
 			oRouter.navTo("login");
 		}
 		
