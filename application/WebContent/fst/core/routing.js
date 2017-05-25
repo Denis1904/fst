@@ -6,9 +6,14 @@ sap.ui.define([], function () {
 	fst.core.Routing = {
 
 		routes: {
-			"home": {
+			"login": {
 				pattern: "",
-				target: "home"
+				target: "login"
+			},
+			"home": {
+				pattern: "home",
+				target: "home",
+				parent: "login"
 			},
 			"test": {
 				pattern: "test",
@@ -33,25 +38,29 @@ sap.ui.define([], function () {
 		},
 
 		targets: {
+			"login": {
+				viewName: "fst.app.login",
+				viewLevel: 0
+			},
 			"home": {
 				viewName: "fst.app.start",
-				viewLevel: 0
+				viewLevel: 1
 			},
 			"test": {
 				viewName: "fst.app.test",
-				viewLevel: 1
+				viewLevel: 2
 			},
 			"cList": {
 				viewName: "fst.app.cList",
-				viewLevel: 1
+				viewLevel: 2
 			},
 			"cNew": {
 				viewName: "fst.app.cNew",
-				viewLevel: 2
+				viewLevel: 3
 			},
 			"cEdit": {
 				viewName: "fst.app.cEdit",
-				viewLevel: 1
+				viewLevel: 2
 			}
 		}
 	};
