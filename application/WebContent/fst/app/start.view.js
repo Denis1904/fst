@@ -24,11 +24,17 @@
 			});
 
 			const oPage = new sap.m.Page({
-
-				title: "Vendor Management Contract",
 				enableScrolling: false,
-				content: [oTileContainer]
-
+				content: [oTileContainer],
+				customHeader: new sap.m.OverflowToolbar({
+					content: [
+						new sap.m.ToolbarSpacer(),
+						new sap.m.ToolbarSpacer(),
+						new sap.m.Label({ text: "Vendor Contract Management" }),
+						new sap.m.ToolbarSpacer(),
+						new sap.m.Button({ icon: "sap-icon://log", text: "{user>/firstname} {user>/lastname} abmelden", press: oController.handleLogout.bind(oController) })
+					]
+				})
 			});
 
 			return oPage;
