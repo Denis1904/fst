@@ -21,11 +21,12 @@
 				text: sLoadingText || oBundle.getText("std.pleaseWait")
 			});
 			
+			const oHeaders = sBtoa ? { Authorization: "Basic " + sBtoa } : {};
 			jQuery.ajax({
 				type: sType,
 				contentType: "application/json",
 				url: _.join([this.__serviceUrl, sUrl], ""),
-				headers: { Authorization: "Basic " + sBtoa },
+				headers: oHeaders,
 				dataType: "json",
 				data: JSON.stringify(oBody),
 				beforeSend: oJqXHR => {
