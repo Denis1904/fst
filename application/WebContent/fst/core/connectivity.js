@@ -46,7 +46,7 @@
 	};
 	
 	fst.core.connectivity.prototype.getUser = function(sUser) {
-		return this.__loadData("getUser", oBundle.getText("contract.loading.multiple"), {
+		return this.__loadData("getUser", oBundle.getText("std.userInfo"), {
 			sType: "POST",
 			oBody: {
 				sUser: sUser
@@ -66,14 +66,14 @@
 	};
 	
 	fst.core.connectivity.prototype.getAllowedStatus = function(sContractId) {
-		return this.__loadData("getAllowedStatus", oBundle.getText("contract.loading.multiple"), {
+		return this.__loadData("getAllowedStatus", oBundle.getText("contract.getAllowedStatus"), {
 			sType: "POST",
 			oBody: { id: sContractId }
 		});
 	};
 	
 	fst.core.connectivity.prototype.changeContractStatus = function(sContractId, sNewStatus) {
-		return this.__loadData("changeContractStatus", oBundle.getText("contract.loading.multiple"), {
+		return this.__loadData("changeContractStatus", oBundle.getText("contract.changeStatus"), {
 			sType: "POST",
 			oBody: {
 				id: sContractId,
