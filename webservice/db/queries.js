@@ -7,6 +7,44 @@
 		return db.queryBuilder().select("id", "name").from("test").execute();
 	};
 	
+	Queries.login = function(sUser, sHash) {
+		return new Promise((fnResolve, fnReject) => {
+			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
+				.from("person as u")
+				.where("u.uid = :uid")
+				.andWhere("u.passwd = :hash")
+				.setParameter(":uid", sUser)
+				.setParameter(":hash", sHash)
+				.execute()
+				.then(aUser => {
+					if (aUser.rows.length === 1) {
+						fnResolve(aUser.rows[0]);
+					} else {
+						fnReject();
+					}
+					
+				});
+		});
+	};
+	
+	Queries.getUser = function(sUser) {
+		return new Promise((fnResolve, fnReject) => {
+			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
+				.from("person as u")
+				.where("u.uid = :uid")
+				.setParameter(":uid", sUser)
+				.execute()
+				.then(aUser => {
+					if (aUser.rows.length === 1) {
+						fnResolve(aUser.rows[0]);
+					} else {
+						fnReject();
+					}
+					
+				});
+		});
+	};
+	
 	Queries.getContract = function(sContractId) {
 		return new Promise((fnResolve, fnReject) => {
 			if (!sContractId) {
