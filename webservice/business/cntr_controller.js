@@ -6,6 +6,13 @@
 			this.Contract = require("./cntr");
 		}
 		
+		addContract(oContract) {
+			return new Promise(fnResolve => {
+				oContract.createdBy = "1";
+				queries.addContract(oContract).then(fnResolve);
+			});
+		}
+		
 		getContract(sContractId) {
 			return new Promise(fnResolve => {
 				
@@ -56,7 +63,10 @@
 					const aReturn = [];
 					
 					if (oContract.getStatus().toString() === sNewStatus) {
-						let sDescr = __getText("contract.statusChangeNotAllowed.Descr", { oldStatus: oContract.getStatus(), newStatus: sNewStatus });
+						let sDescr = __getText("contract.statusChangeNotAllowed.Descr", {
+							oldStatus: oContract.getStatus(),
+							newStatus: sNewStatus
+						});
 						aReturn.push({
 							title: __getText("contract.statusChangeNotAllowed"),
 							description: sDescr,

@@ -48,9 +48,7 @@
 			.execute();
 	};
 	
-	Queries.addContracts = function(oContract) {
-		
-		logger.info("Inhalt: " + oContract.validFrom + "\n " + oContract.validTo);
+	Queries.addContract = function(oContract) {
 		
 		const oValues = new Map();
 		oValues.set("validFrom", ":validFrom");
@@ -64,20 +62,22 @@
 		
 		return db.queryBuilder()
 			.insert("contract")
+				.setValue("title", ":title")
+				.setValue("status", ":status")
 				.setValue("validFrom", ":validFrom")
 				.setValue("validTo", ":validTo")
 				.setValue("payagreement", ":payagreement")
 				.setValue("shippagreement", ":shippagreement")
 				.setValue("payguarantee", ":payguarantee")
-				.setValue("status", ":status")
 				.setValue("createdby", ":createdby")
 				.setValue("releasedby", ":releasedby")
+				.setParameter(":title", oContract.title)
+				.setParameter(":status", 1)
 				.setParameter(":validFrom", oContract.validFrom)
 				.setParameter(":validTo", oContract.validTo)
 				.setParameter(":payagreement", 1)
 				.setParameter(":shippagreement", 1)
 				.setParameter(":payguarantee", 1)
-				.setParameter(":status", 1)
 				.setParameter(":createdby", 1)
 				.setParameter(":releasedby", 1)
 			.execute();

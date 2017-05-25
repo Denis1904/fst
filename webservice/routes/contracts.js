@@ -45,7 +45,8 @@
 		res.set("Content-Type", "application/javascript");
 		const oContract = req.body;
 		
-		queries.addContracts(oContract).then(oResp => {
+		const oCntr = new ContractController();
+		oCntr.addContract(oContract).then(oResp => {
 				res.send(oResp);
 			}
 		);
