@@ -113,11 +113,11 @@
 				.setParameter(":status", 1)
 				.setParameter(":validFrom", oContract.validFrom)
 				.setParameter(":validTo", oContract.validTo)
-				.setParameter(":payagreement", 1)
-				.setParameter(":shippagreement", 1)
-				.setParameter(":payguarantee", 1)
-				.setParameter(":createdby", 1)
-				.setParameter(":releasedby", 1)
+				.setParameter(":payagreement", oContract.payagreement)
+				.setParameter(":shippagreement", oContract.shippagreement)
+				.setParameter(":payguarantee", oContract.paygurantee)
+				.setParameter(":createdby", oContract.createdBy)
+				.setParameter(":releasedby", oContract.releasedBy)
 			.execute();
 		
 	};

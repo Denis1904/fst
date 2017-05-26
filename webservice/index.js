@@ -31,11 +31,14 @@ db = require("./db/connection");
 /** @global */
 queries = require("./db/queries");
 
+/** @global */
+uid = undefined;
 app.use(basicAuth(function(username, password, fn) {
 	"use strict";
 	
 	const sha1 = require("sha1");
 	queries.login(username, sha1(password)).then(oUser => {
+		uid = oUser.id;	// store user id globally
 		fn(null, {});
 	}).catch(() => {
 		fn(new Error("Login error"), null);
