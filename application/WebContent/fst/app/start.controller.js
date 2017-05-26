@@ -6,7 +6,7 @@
 		onInit: function() {
 			oRouter.attachRouteMatchedWithData("home", () => {
 				const oModel = sap.ui.getCore().getModel("user");
-				if (!(oModel && oModel.getData())) {
+				if (!(_.isObject(oModel) && _.isObject(oModel.getData()))) {
 					Connectivity.getUser(sessionStorage.getItem("USER")).then((oUser) => {
 						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(oUser), "user");
 						oRouter.navTo("home");
@@ -28,7 +28,10 @@
 			sessionStorage.removeItem("USER");
 			sessionStorage.removeItem("HASH");
 			Connectivity.__btoa = null;
-			sap.ui.getCore().getModel("USER").setData();
+			const oModel = sap.ui.getCore().getModel("user");
+			if (_.isObject(oModel)) {
+				oModel.setData();
+			}
 			oRouter.navTo("login");
 		}
 		
