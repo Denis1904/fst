@@ -88,6 +88,10 @@
 					oMP.setModel(new sap.ui.model.json.JSONModel(aReturn));
 					oMP.openBy(this.getView().oBtnChangeStatus);
 				}
+				else {
+					this.getView().oTable.removeSelections();
+					this.loadContracts();
+				}
 			});
 		}
 		

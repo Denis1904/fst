@@ -150,17 +150,27 @@
 			colItems.addCell(txtNAME3);
 			
 			let txtNAME4 = new sap.m.Text("txtNAME4", {
-				text: "{payagreement}"
+				text: "{payagreement_txt}"
 			});
 			colItems.addCell(txtNAME4);
 			
 			let txtNAME5 = new sap.m.Text("txtNAME5", {
-				text: "{shippagreement}"
+				text: "{shippagreement_txt}"
 			});
 			colItems.addCell(txtNAME5);
 			
-			let txtNAME6 = new sap.m.Text("txtNAME6", {
-				text: "{payguarantee}"
+			let txtNAME6 = new sap.m.Switch("txtNAME6", {
+				state: {
+					parts: [{
+						path: "payguarantee"
+					}],
+					formatter: function(sGurantee) {
+						return sGurantee === "1";
+					}
+				},
+				customTextOn: oBundle.getText("std.yes"),
+				customTextOff: oBundle.getText("std.no"),
+				enabled: false
 			});
 			colItems.addCell(txtNAME6);
 			

@@ -48,9 +48,9 @@
 	Queries.deleteContract = function(sContractId) {
 		return db.queryBuilder()
 			.delete("contract")
-				.where("contract.id = :id")
-				.setParameter(":id", sContractId)
-				.execute();
+			.where("contract.id = :id")
+			.setParameter(":id", sContractId)
+			.execute();
 	};
 	
 	Queries.getContract = function(sContractId) {
@@ -58,10 +58,22 @@
 			if (!sContractId) {
 				fnReject();
 			}
-			db.queryBuilder().select("contract.id", "contract.title", "contract.validFrom", "contract.validTo", "contract.status",
-				"contract.payguarantee", "contractstatus.value as contractStatus", "createdBy.lastname as createdLastname",
+			db.queryBuilder().select(
+				"contract.id",
+				"contract.title",
+				"contract.validFrom",
+				"contract.validTo",
+				"contract.status",
+				"contractstatus.value as contractStatus",
+				"contract.createdby",
+				"createdBy.lastname as createdLastname",
+				"contract.releasedby",
 				"releasedBy.lastname as releasedLastname",
-				"shippagreement.name as shippagreement", "payagreement.name as payagreement")
+				"contract.payguarantee",
+				"contract.shippagreement",
+				"contract.payagreement",
+				"shippagreement.name as shippagreement_txt",
+				"payagreement.name as payagreement_txt")
 				.from("contract")
 				.leftJoin("contract", "contractstatus", "contractstatus", "contract.status = contractstatus.id")
 				.leftJoin("contract", "person", "createdBy", "contract.createdby = createdBy.id")
@@ -81,10 +93,20 @@
 	
 	Queries.getContracts = function() {
 		return db.queryBuilder()
-			.select("contract.id", "contract.status", "contract.title", "contract.validFrom", "contract.validTo",
-				"contract.payguarantee", "contractstatus.value as contractStatus", "createdBy.lastname as createdLastname",
+			.select(
+				"contract.id",
+				"contract.status",
+				"contract.title",
+				"contract.validFrom",
+				"contract.validTo",
+				"contractstatus.value as contractStatus",
+				"createdBy.lastname as createdLastname",
 				"releasedBy.lastname as releasedLastname",
-				"shippagreement.name as shippagreement", "payagreement.name as payagreement")
+				"contract.payguarantee",
+				"contract.shippagreement",
+				"contract.payagreement",
+				"shippagreement.name as shippagreement_txt",
+				"payagreement.name as payagreement_txt")
 			.from("contract")
 			.leftJoin("contract", "contractstatus", "contractstatus", "contract.status = contractstatus.id")
 			.leftJoin("contract", "person", "createdBy", "contract.createdby = createdBy.id")
@@ -108,30 +130,52 @@
 		
 		return db.queryBuilder()
 			.insert("contract")
-				.setValue("title", ":title")
-				.setValue("status", ":status")
-				.setValue("validFrom", ":validFrom")
-				.setValue("validTo", ":validTo")
-				.setValue("payagreement", ":payagreement")
-				.setValue("shippagreement", ":shippagreement")
-				.setValue("payguarantee", ":payguarantee")
-				.setValue("createdby", ":createdby")
-				.setValue("releasedby", ":releasedby")
-				.setParameter(":title", oContract.title)
-				.setParameter(":status", 1)
-				.setParameter(":validFrom", oContract.validFrom)
-				.setParameter(":validTo", oContract.validTo)
-				.setParameter(":payagreement", oContract.payagreement)
-				.setParameter(":shippagreement", oContract.shippagreement)
-				.setParameter(":payguarantee", oContract.paygurantee)
-				.setParameter(":createdby", oContract.createdBy)
-				.setParameter(":releasedby", oContract.releasedBy)
+			.setValue("title", ":title")
+			.setValue("status", ":status")
+			.setValue("validFrom", ":validFrom")
+			.setValue("validTo", ":validTo")
+			.setValue("payagreement", ":payagreement")
+			.setValue("shippagreement", ":shippagreement")
+			.setValue("payguarantee", ":payguarantee")
+			.setValue("createdby", ":createdby")
+			.setValue("releasedby", ":releasedby")
+			.setParameter(":title", oContract.title)
+			.setParameter(":status", 1)
+			.setParameter(":validFrom", oContract.validFrom)
+			.setParameter(":validTo", oContract.validTo)
+			.setParameter(":payagreement", oContract.payagreement)
+			.setParameter(":shippagreement", oContract.shippagreement)
+			.setParameter(":payguarantee", oContract.payguarantee)
+			.setParameter(":createdby", oContract.createdBy)
+			.setParameter(":releasedby", oContract.releasedBy)
 			.execute();
 		
 	};
 	
 	Queries.updateContract = function(oContract) {
-		/* TODO implement */
+		return db.queryBuilder()
+			.update("contract")
+			.set("title", ":title")
+			.set("status", ":status")
+			.set("validFrom", ":validFrom")
+			.set("validTo", ":validTo")
+			.set("payagreement", ":payagreement")
+			.set("shippagreement", ":shippagreement")
+			.set("payguarantee", ":payguarantee")
+			.set("createdby", ":createdby")
+			.set("releasedby", ":releasedby")
+			.where("contract.id = :contractId")
+			.setParameter(":title", oContract.title)
+			.setParameter(":status", oContract.status)
+			.setParameter(":validFrom", oContract.validFrom)
+			.setParameter(":validTo", oContract.validTo)
+			.setParameter(":payagreement", oContract.payagreement)
+			.setParameter(":shippagreement", oContract.shippagreement)
+			.setParameter(":payguarantee", oContract.payguarantee)
+			.setParameter(":createdby", oContract.createdBy)
+			.setParameter(":releasedby", oContract.releasedBy)
+			.setParameter(":contractId", oContract.id)
+			.execute();
 	};
 	
 	module.exports = Queries;
