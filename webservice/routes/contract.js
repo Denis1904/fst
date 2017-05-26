@@ -39,6 +39,18 @@
 		
 	});
 	
+	sRoute = "/deleteContract";
+	app.post(sRoute, bJson, function(req, res, next) {
+		logger.info("Hit route /deleteContract Mode: POST");
+		res.set("Content-Type", "application/javascript");
+		const oContract = req.body;
+		
+		const oCntr = new ContractController();
+		oCntr.deleteContract(oContract.id).then(oResp => {
+				res.send(oResp);
+		});
+	});
+	
 	sRoute = "/addContract";
 	app.post(sRoute, bJson, function(req, res, next) {
 		logger.info("Hit route /addContract Mode: POST");

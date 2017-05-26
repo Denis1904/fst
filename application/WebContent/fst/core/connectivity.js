@@ -3,7 +3,8 @@
 	
 	jQuery.sap.declare("fst.core.connectivity");
 	
-	fst.core.connectivity = function() {};
+	fst.core.connectivity = function() {
+	};
 	
 	fst.core.connectivity.prototype.__btoa = undefined;
 	
@@ -62,6 +63,13 @@
 		return this.__loadData("addContract", oBundle.getText("contract.saving"), {
 			sType: "POST",
 			oBody: oContract
+		});
+	};
+	
+	fst.core.connectivity.prototype.deleteContract = function(sContractId) {
+		return this.__loadData("deleteContract", oBundle.getText("contract.delete"), {
+			sType: "POST",
+			oBody: { id: sContractId }
 		});
 	};
 	

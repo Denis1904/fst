@@ -26,6 +26,17 @@
 			oRouter.navTo("cNew");
 		},
 		
+		handleDeletePress: function() {
+			const oContractObject = this.getSelectedContractObject(this);
+			Connectivity.deleteContract(oContractObject.id).then(oResp => {
+				if (oResp) {
+					this.loadContracts();
+				} else {
+					sap.m.MessageToast.show(oBundle.getText("contract.notDelete"));
+				}
+			});
+		},
+		
 		getSelectedContractObject: function(oController) {
 			const oView = oController.getView();
 			const oSelection = oView.oTable.getSelectedItem();
@@ -36,7 +47,10 @@
 			const oView = this.getView();
 			const oContractObject = this.getSelectedContractObject(this);
 			
-			[oView.oBtnChangeStatus, oView.oBtnEdit].forEach(e => e.setVisible(!!oContractObject));
+			oView.oBtnChangeStatus.setVisible(!!oContractObject);
+				[oView.oBtnEdit, oView.oBtnDelete].forEach(e => {
+					e.setVisible(!!oContractObject && oContractObject.status === 1);
+				});
 			
 		},
 		

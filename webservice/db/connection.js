@@ -40,6 +40,10 @@
 				});
 			});
 		}.bind(oQueryBuilder);
+		
+		
+		oQueryBuilder.delete = oQueryBuilder.dlete; // map typo from libary
+		
 		return oQueryBuilder;
 	};
 	

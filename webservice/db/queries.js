@@ -45,6 +45,14 @@
 		});
 	};
 	
+	Queries.deleteContract = function(sContractId) {
+		return db.queryBuilder()
+			.delete("contract")
+				.where("contract.id = :id")
+				.setParameter(":id", sContractId)
+				.execute();
+	};
+	
 	Queries.getContract = function(sContractId) {
 		return new Promise((fnResolve, fnReject) => {
 			if (!sContractId) {
@@ -73,8 +81,8 @@
 	
 	Queries.getContracts = function() {
 		return db.queryBuilder()
-			.select("contract.id", "contract.title", "contract.validFrom", "contract.validTo", "contract.payguarantee",
-				"contractstatus.value as contractStatus", "createdBy.lastname as createdLastname",
+			.select("contract.id", "contract.status", "contract.title", "contract.validFrom", "contract.validTo",
+				"contract.payguarantee", "contractstatus.value as contractStatus", "createdBy.lastname as createdLastname",
 				"releasedBy.lastname as releasedLastname",
 				"shippagreement.name as shippagreement", "payagreement.name as payagreement")
 			.from("contract")

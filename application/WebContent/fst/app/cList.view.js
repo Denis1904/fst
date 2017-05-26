@@ -192,6 +192,13 @@
 				visible: false
 			});
 			
+			this.oBtnDelete = new sap.m.Button({
+				text: oBundle.getText("std.delete"),
+				icon: "sap-icon://delete",
+				press: oController.handleDeletePress.bind(oController),
+				visible: false
+			});
+			
 			this.oBtnNew = new sap.m.Button({
 				text: oBundle.getText("std.new"),
 				icon: "sap-icon://add-document",
@@ -210,6 +217,7 @@
 						new sap.m.ToolbarSpacer(),
 						this.oBtnNew,
 						this.oBtnEdit,
+						this.oBtnDelete,
 						new sap.m.ToolbarSpacer()
 					]
 				})

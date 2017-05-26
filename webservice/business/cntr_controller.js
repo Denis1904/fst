@@ -13,6 +13,23 @@
 			});
 		}
 		
+		deleteContract(sContractId) {
+			return new Promise(fnResolve => {
+				
+				this.getContract(sContractId).then(oContract => {
+					
+					if (oContract.status === 1) {
+						queries.deleteContract(sContractId).then(oReturn => {
+							fnResolve(true);
+						});
+					}
+					else {
+						fnResolve(false);
+					}
+				});
+			});
+		}
+		
 		getContract(sContractId) {
 			return new Promise(fnResolve => {
 				
