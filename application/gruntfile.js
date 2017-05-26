@@ -67,8 +67,8 @@
                     proxies: [
                         {
                             context: "/proxy",
-                            host: "192.168.0.10", // SAP System IP
-                            port: "8000",
+                            host: "127.0.0.1",
+                            port: "3000",
                             https: false,
                             rewrite: {
                                 "^/proxy": ""

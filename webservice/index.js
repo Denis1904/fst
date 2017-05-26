@@ -1,6 +1,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *	Definition of global variables
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+const basicAuth = require("basic-auth-connect");
 const express = require("express");
 const argv = require("optimist").argv;
 _ = require("lodash");
@@ -30,14 +31,21 @@ db = require("./db/connection");
 /** @global */
 queries = require("./db/queries");
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *	Global access control header
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-app.use((req, res, next) => {
+/** @global */
+uid = undefined;
+app.use(basicAuth(function(username, password, fn) {
 	"use strict";
-	res.header("Access-Control-Allow-Origin", "*");
-	next();
-});
+	
+	const sha1 = require("sha1");
+	queries.login(username, sha1(password)).then(oUser => {
+		uid = oUser.id;	// store user id globally
+		fn(null, {});
+	}).catch(() => {
+		fn(new Error("Login error"), null);
+	});
+	
+}));
+
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *	Default: using 'accept-language' header to guess language settings
@@ -52,12 +60,14 @@ i18n.configure({
 });
 app.use(i18n.init);
 
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *	Definition of routes
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 require("./routes/index");
 require("./routes/sayHello");
-require("./routes/contracts");
+require("./routes/user");
+require("./routes/contract");
 require("./routes/404"); // should be always at the end of routes require block
 
 

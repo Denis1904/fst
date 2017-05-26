@@ -7,6 +7,44 @@
 		return db.queryBuilder().select("id", "name").from("test").execute();
 	};
 	
+	Queries.login = function(sUser, sHash) {
+		return new Promise((fnResolve, fnReject) => {
+			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
+				.from("person as u")
+				.where("u.uid = :uid")
+				.andWhere("u.passwd = :hash")
+				.setParameter(":uid", sUser)
+				.setParameter(":hash", sHash)
+				.execute()
+				.then(aUser => {
+					if (aUser.rows.length === 1) {
+						fnResolve(aUser.rows[0]);
+					} else {
+						fnReject();
+					}
+					
+				});
+		});
+	};
+	
+	Queries.getUser = function(sUser) {
+		return new Promise((fnResolve, fnReject) => {
+			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
+				.from("person as u")
+				.where("u.uid = :uid")
+				.setParameter(":uid", sUser)
+				.execute()
+				.then(aUser => {
+					if (aUser.rows.length === 1) {
+						fnResolve(aUser.rows[0]);
+					} else {
+						fnReject();
+					}
+					
+				});
+		});
+	};
+	
 	Queries.getContract = function(sContractId) {
 		return new Promise((fnResolve, fnReject) => {
 			if (!sContractId) {
@@ -75,11 +113,11 @@
 				.setParameter(":status", 1)
 				.setParameter(":validFrom", oContract.validFrom)
 				.setParameter(":validTo", oContract.validTo)
-				.setParameter(":payagreement", 1)
-				.setParameter(":shippagreement", 1)
-				.setParameter(":payguarantee", 1)
-				.setParameter(":createdby", 1)
-				.setParameter(":releasedby", 1)
+				.setParameter(":payagreement", oContract.payagreement)
+				.setParameter(":shippagreement", oContract.shippagreement)
+				.setParameter(":payguarantee", oContract.paygurantee)
+				.setParameter(":createdby", oContract.createdBy)
+				.setParameter(":releasedby", oContract.releasedBy)
 			.execute();
 		
 	};

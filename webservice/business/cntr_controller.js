@@ -8,7 +8,7 @@
 		
 		addContract(oContract) {
 			return new Promise(fnResolve => {
-				oContract.createdBy = "1";
+				oContract.createdBy = uid;
 				queries.addContract(oContract).then(fnResolve);
 			});
 		}
