@@ -42,7 +42,7 @@
 		}.bind(oQueryBuilder);
 		
 		
-		oQueryBuilder.delete = oQueryBuilder.dlete; // map typo from libary
+		oQueryBuilder.delete = oQueryBuilder.dlete; // map typo from library
 		
 		return oQueryBuilder;
 	};
