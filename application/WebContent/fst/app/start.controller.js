@@ -27,6 +27,8 @@
 		handleLogout: function() {
 			sessionStorage.removeItem("USER");
 			sessionStorage.removeItem("HASH");
+			Connectivity.__btoa = null;
+			sap.ui.getCore().getModel("USER").setData();
 			oRouter.navTo("login");
 		}
 		
