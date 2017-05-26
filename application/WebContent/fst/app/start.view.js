@@ -14,11 +14,11 @@
 				tiles: [
 					new sap.m.StandardTile({
 						icon: "sap-icon://customer-and-supplier",
-						title: "Vertragspflege",
+						title: oBundle.getText("contract.maintenance"),
 						press: oController.handleContractMaintenancePress
 					}), new sap.m.StandardTile({
 						icon: "sap-icon://request",
-						title: "Vertragsvergleich",
+						title: oBundle.getText("contract.compare"),
 						press: oController.handleCompareContractPress
 					})]
 			});
@@ -30,9 +30,15 @@
 					content: [
 						new sap.m.ToolbarSpacer(),
 						new sap.m.ToolbarSpacer(),
-						new sap.m.Label({ text: "Vendor Contract Management" }),
+						new sap.m.Label({
+							text: oBundle.getText("std.app.title")
+						}),
 						new sap.m.ToolbarSpacer(),
-						new sap.m.Button({ icon: "sap-icon://log", text: "{user>/firstname} {user>/lastname} abmelden", press: oController.handleLogout.bind(oController) })
+						new sap.m.Button({
+							icon: "sap-icon://log",
+							text: "{user>/firstname} {user>/lastname} " + oBundle.getText("std.logout"),
+							press: oController.handleLogout.bind(oController)
+						})
 					]
 				})
 			});

@@ -40,14 +40,14 @@
 								}),
 								content: [
 									new sap.m.Title({
-										text: "Login"
+										text: oBundle.getText("std.login")
 									}).addStyleClass("fontSizeLarger"),
-									new sap.m.Label({ text: "Benutzername:" }).addStyleClass("sapUiSmallMarginTop"),
+									new sap.m.Label({ text: oBundle.getText("std.user") + ":" }).addStyleClass("sapUiSmallMarginTop"),
 									this.ipUser,
-									new sap.m.Label({ text: "Passwort:" }).addStyleClass("sapUiSmallMarginTop"),
+									new sap.m.Label({ text: oBundle.getText("std.pass") + ":" }).addStyleClass("sapUiSmallMarginTop"),
 									this.ipPass,
 									new sap.m.Button({
-										text: "Login",
+										text: oBundle.getText("std.login"),
 										press: oController.handleLogin.bind(oController),
 										width: "100%",
 										layoutData: new sap.ui.layout.GridData({
