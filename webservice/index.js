@@ -35,7 +35,7 @@ queries = require("./db/queries");
 uid = undefined;
 app.use(basicAuth(function(username, password, fn) {
 	"use strict";
-	
+	logger.info("Check authorization");
 	const sha1 = require("sha1");
 	queries.login(username, sha1(password)).then(oUser => {
 		uid = oUser.id;	// store user id globally
