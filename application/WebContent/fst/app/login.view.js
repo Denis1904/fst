@@ -39,7 +39,10 @@
 									span: "L4 M6 S12"
 								}),
 								content: [
-									new sap.m.Label({ text: "Benutzername:" }),
+									new sap.m.Title({
+										text: "Login"
+									}).addStyleClass("fontSizeLarger"),
+									new sap.m.Label({ text: "Benutzername:" }).addStyleClass("sapUiSmallMarginTop"),
 									this.ipUser,
 									new sap.m.Label({ text: "Passwort:" }).addStyleClass("sapUiSmallMarginTop"),
 									this.ipPass,
@@ -51,9 +54,9 @@
 											span: "L12 M12 S12"
 											
 										})
-									}).addStyleClass("sapUiTinyMarginTop")
+									}).addStyleClass("sapUiTinyMarginTop sapUiTinyMarginBottom")
 								]
-							}),
+							}).addStyleClass("sapUiContentPadding sapUiMediumMarginTop sapUiMediumMarginBottom maxWidth350 sapUiShd"),
 							new sap.ui.layout.VerticalLayout({
 								width: "100%",
 								layoutData: new sap.ui.layout.GridData({
