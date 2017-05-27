@@ -22,7 +22,7 @@
 		new sap.m.Shell({
 			showLogout: false,
 			app: oApp
-		}).placeAt("content");
+		}).placeAt("content").setAppWidthLimited(false);
 		
 		jQuery.sap.require("fst.core.connectivity");
 		window.Connectivity = new fst.core.connectivity();

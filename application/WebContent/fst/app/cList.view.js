@@ -119,47 +119,54 @@
 				})
 			});
 			this.oTable.addColumn(col09);
+
+			let col10 = new sap.m.Column("col10", {
+				header: new sap.m.Label({
+					text: oBundle.getText("std.vendor")
+				})
+			});
+			this.oTable.addColumn(col10);
 			
 			let colItems = new sap.m.ColumnListItem("colItems", {
 				type: "Active"
 			});
 			this.oTable.bindAggregation("items", "/", colItems);
 			
-			let txtNAME = new sap.m.Text("txtNAME", {
+			let txtNAME01 = new sap.m.Text("txtNAME01", {
 				text: "{id}"
 			});
-			colItems.addCell(txtNAME);
+			colItems.addCell(txtNAME01);
 			
 			let title = new sap.m.Text({
 				text: "{title}"
 			});
 			colItems.addCell(title);
 			
-			let txtNAME2 = new sap.m.Text("txtNAME2", {
+			let txtNAME02 = new sap.m.Text("txtNAME02", {
 				text: { path: "validFrom", formatter: sDate => {
 					return dateFormatter.format(new Date(sDate));
 				} }
 			});
-			colItems.addCell(txtNAME2);
+			colItems.addCell(txtNAME02);
 			
-			let txtNAME3 = new sap.m.Text("txtNAME3", {
+			let txtNAME03 = new sap.m.Text("txtNAME03", {
 				text: { path: "validTo", formatter: sDate => {
 					return dateFormatter.format(new Date(sDate));
 				} }
 			});
-			colItems.addCell(txtNAME3);
+			colItems.addCell(txtNAME03);
 			
-			let txtNAME4 = new sap.m.Text("txtNAME4", {
+			let txtNAME04 = new sap.m.Text("txtNAME04", {
 				text: "{payagreement_txt}"
 			});
-			colItems.addCell(txtNAME4);
+			colItems.addCell(txtNAME04);
 			
-			let txtNAME5 = new sap.m.Text("txtNAME5", {
+			let txtNAME05 = new sap.m.Text("txtNAME05", {
 				text: "{shippagreement_txt}"
 			});
-			colItems.addCell(txtNAME5);
+			colItems.addCell(txtNAME05);
 			
-			let txtNAME6 = new sap.m.Switch("txtNAME6", {
+			let txtNAME06 = new sap.m.Switch("txtNAME06", {
 				state: {
 					parts: [{
 						path: "payguarantee"
@@ -172,22 +179,27 @@
 				customTextOff: oBundle.getText("std.no"),
 				enabled: false
 			});
-			colItems.addCell(txtNAME6);
+			colItems.addCell(txtNAME06);
 			
-			let txtNAME7 = new sap.m.Text("txtNAME7", {
+			let txtNAME07 = new sap.m.Text("txtNAME07", {
 				text: "{contractStatus}"
 			});
-			colItems.addCell(txtNAME7);
+			colItems.addCell(txtNAME07);
 			
-			let txtNAME8 = new sap.m.Text("txtNAME8", {
+			let txtNAME08 = new sap.m.Text("txtNAME08", {
 				text: "{createdFirstname} {createdLastname}"
 			});
-			colItems.addCell(txtNAME8);
+			colItems.addCell(txtNAME08);
 			
-			let txtNAME9 = new sap.m.Text("txtNAME9", {
+			let txtNAME09 = new sap.m.Text("txtNAME09", {
 				text: "{releasedFirstname} {releasedLastname}"
 			});
-			colItems.addCell(txtNAME9);
+			colItems.addCell(txtNAME09);
+
+			let txtNAME10 = new sap.m.Text("txtNAME10", {
+				text: "{vendorName}"
+			});
+			colItems.addCell(txtNAME10);
 			
 			this.oBtnChangeStatus = new sap.m.Button({
 				text: oBundle.getText("contract.changeStatus"),

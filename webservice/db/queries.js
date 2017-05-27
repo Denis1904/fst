@@ -75,13 +75,15 @@
 				"contract.shippagreement",
 				"contract.payagreement",
 				"shippagreement.name as shippagreement_txt",
-				"payagreement.name as payagreement_txt")
+				"payagreement.name as payagreement_txt",
+				"vendor.name as vendorName")
 				.from("contract")
 				.leftJoin("contract", "contractstatus", "contractstatus", "contract.status = contractstatus.id")
 				.leftJoin("contract", "person", "createdBy", "contract.createdby = createdBy.id")
 				.leftJoin("contract", "person", "releasedBy", "contract.releasedby = releasedBy.id")
 				.leftJoin("contract", "shippagreement", "shippagreement", "contract.shippagreement = shippagreement.id")
 				.leftJoin("contract", "payagreement", "payagreement", "contract.payagreement = payagreement.id")
+				.leftJoin("contract", "vendor", "vendor", "contract.vendor = vendor.id")
 				.where("contract.id = :contractId")
 				.setParameter(":contractId", sContractId)
 				.execute()
@@ -110,13 +112,15 @@
 				"contract.shippagreement",
 				"contract.payagreement",
 				"shippagreement.name as shippagreement_txt",
-				"payagreement.name as payagreement_txt")
+				"payagreement.name as payagreement_txt",
+				"vendor.name as vendorName")
 			.from("contract")
 			.leftJoin("contract", "contractstatus", "contractstatus", "contract.status = contractstatus.id")
 			.leftJoin("contract", "person", "createdBy", "contract.createdby = createdBy.id")
 			.leftJoin("contract", "person", "releasedBy", "contract.releasedby = releasedBy.id")
 			.leftJoin("contract", "shippagreement", "shippagreement", "contract.shippagreement = shippagreement.id")
 			.leftJoin("contract", "payagreement", "payagreement", "contract.payagreement = payagreement.id")
+			.leftJoin("contract", "vendor", "vendor", "contract.vendor = vendor.id")
 			.execute();
 	};
 	
