@@ -21,7 +21,7 @@
 		},
 		
 		handleCompareContractPress: function() {
-			oRouter.navTo("test");
+			oRouter.navTo("cCompare");
 		},
 		
 		handleLogout: function() {

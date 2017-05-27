@@ -15,9 +15,9 @@ sap.ui.define([], function () {
 				target: "home",
 				parent: "login"
 			},
-			"test": {
-				pattern: "test",
-				target: "test",
+			"cCompare": {
+				pattern: "cCompare",
+				target: "cCompare",
 				parent: "home"
 			},
 			"cList": {
@@ -41,8 +41,8 @@ sap.ui.define([], function () {
 				viewName: "fst.app.start",
 				viewLevel: 1
 			},
-			"test": {
-				viewName: "fst.app.test",
+			"cCompare": {
+				viewName: "fst.app.cCompare",
 				viewLevel: 2
 			},
 			"cList": {
