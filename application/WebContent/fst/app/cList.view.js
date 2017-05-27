@@ -211,6 +211,7 @@
 			this.oBtnEdit = new sap.m.Button({
 				text: oBundle.getText("std.edit"),
 				icon: "sap-icon://edit",
+				press: oController.editButtonPress,
 				visible: false
 			});
 			

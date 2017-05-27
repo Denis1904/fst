@@ -1,7 +1,6 @@
-/**
- * Created by Denis on 16.04.2017.
+/*
+ * Created by Denis on 21.04.2017.
  */
-
 (function () {
 	"use strict";
 
@@ -10,10 +9,20 @@
 
 		},
 		handleBackBtnPress: function () {
-			oRouter.navTo("start");
+			oRouter.navTo("cList");
 		},
-		addNewButtonPress: function () {
-			oRouter.navTo("start");
+
+		saveButtonPress: function () {
+
+			const oContract = this.getView().getModel().getData();
+
+			Connectivity.addContract(oContract).then(
+				aResponse => {
+					console.log(aResponse);
+
+				}
+			);
 		}
+
 	});
 })();

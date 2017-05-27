@@ -23,7 +23,12 @@
 		},
 		
 		addNewButtonPress: function() {
-			oRouter.navTo("cNew");
+			oRouter.navTo("cEdit");
+		},
+
+		editButtonPress: function () {
+			oRouter.navTo("cEdit");
+			oController.getSelectedContractObject(oController);
 		},
 		
 		handleDeletePress: function() {
