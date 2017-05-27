@@ -10,10 +10,10 @@
 		createStatusChart: function() {
 			return this.createPieChart({
 				type: "pie",
-				title: "Status Übersicht",
-				measureTxt: "Anzahl",
+				title: oBundle.getText("contract.status.overview.title"),
+				measureTxt: oBundle.getText("std.amount"),
 				measureVal: "{value}",
-				dimTxt: "Status",
+				dimTxt: oBundle.getText("contract.Status"),
 				dimVal: "{title}",
 				data: "status>/data"
 			});
@@ -22,10 +22,10 @@
 		createVendorChart: function() {
 			return this.createPieChart({
 				type: "donut",
-				title: "Lieferanten Vertragsübersicht",
-				measureTxt: "Anzahl",
+				title: oBundle.getText("contract.overview.vendor.title"),
+				measureTxt: oBundle.getText("std.amount"),
 				measureVal: "{value}",
-				dimTxt: "Lieferant",
+				dimTxt: oBundle.getText("std.vendor"),
 				dimVal: "{title}",
 				data: "vendor>/data"
 			});
@@ -44,7 +44,7 @@
 						dataLabel: {
 							visible: true,
 							type: "value",
-							formatString: "0 Verträge",
+							formatString: "0 " + oBundle.getText("contract.plural"),
 							style: {
 								fontSize: "9px"
 							}
@@ -85,12 +85,12 @@
 		
 		createPayAgreementChart: function() {
 			return this.createHeatMap({
-				title: "Zahlungsvereinbarungen",
-				dim1Txt: "Lieferant",
-				dim2Txt: "Zahlungsvereinbarung",
+				title: oBundle.getText("contract.payagreements"),
+				dim1Txt: oBundle.getText("std.vendor"),
+				dim2Txt: oBundle.getText("contract.payagreements"),
 				dim1Val: "{vendor}",
 				dim2Val: "{payAgreement}",
-				measureTxt: "Anzahl Verträge",
+				measureTxt: oBundle.getText("contracts.amount"),
 				measureVal: "{value}",
 				data: "payagreement>/data"
 			});
@@ -98,12 +98,12 @@
 		
 		createShippAgreementChart: function() {
 			return this.createHeatMap({
-				title: "Liefervereinbarungen",
-				dim1Txt: "Lieferant",
-				dim2Txt: "Liefervereinbarungen",
+				title: oBundle.getText("contract.shippagreements"),
+				dim1Txt: oBundle.getText("std.vendor"),
+				dim2Txt: oBundle.getText("contract.shippagreements"),
 				dim1Val: "{vendor}",
 				dim2Val: "{shippAgreement}",
-				measureTxt: "Anzahl Verträge",
+				measureTxt: oBundle.getText("contracts.amount"),
 				measureVal: "{value}",
 				data: "shippagreement>/data"
 			});
@@ -179,7 +179,7 @@
 			return new sap.m.Page({
 				showNavButton: true,
 				navButtonPress: oController.handleBackBtnPress.bind(oController),
-				title: "Vertragsvergleich",
+				title: oBundle.getText("contract.compare"),
 				content: [
 					new sap.ui.layout.BlockLayout({
 						background: sap.ui.layout.BlockBackgroundType.Mixed,
