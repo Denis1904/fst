@@ -64,5 +64,33 @@
 		);
 		
 	});
+
+	sRoute = "/editContract";
+	app.post(sRoute, bJson, function(req, res, next) {
+		logger.info("Hit route /editContract Mode: POST");
+		res.set("Content-Type", "application/javascript");
+		const oContract = req.body;
+
+		const oCntr = new ContractController();
+		oCntr.updateContract(oContract).then(oResp => {
+				res.send(oResp);
+			}
+		);
+
+	});
+
+	sRoute = "/getContract";
+	app.post(sRoute, bJson, function(req, res, next) {
+		logger.info("Hit route /getContract Mode: POST");
+		res.set("Content-Type", "application/javascript");
+		const oContract = req.body;
+
+		const oCntr = new ContractController();
+		oCntr.getContract(oContract.id).then(oResp => {
+				res.send(oResp);
+			}
+		);
+
+	});
 	
 })();

@@ -88,6 +88,9 @@
 				.setParameter(":contractId", sContractId)
 				.execute()
 				.then(oContract => {
+					oContract.rows[0].validFrom = oContract.rows[0].validFrom.toJSON().substring(0, 10);
+					oContract.rows[0].validTo = oContract.rows[0].validTo.toJSON().substring(0, 10);
+					oContract.rows[0].payguarantee = oContract.rows[0].payguarantee === "1";
 					fnResolve(oContract.rows[0]);
 				});
 			
@@ -161,6 +164,7 @@
 	};
 	
 	Queries.updateContract = function(oContract) {
+		oContract.payguarantee = oContract.payguarantee ? "1" : "0";
 		return db.queryBuilder()
 			.update("contract")
 			.set("title", ":title")

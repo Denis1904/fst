@@ -37,7 +37,7 @@
 						new sap.m.Button({
 							text: oBundle.getText("std.refresh"),
 							icon: "sap-icon://refresh",
-							press: oController.loadContracts.bind(oController)
+							press: oController.loadContract.bind(oController)
 						})
 					]
 				}),
@@ -211,7 +211,7 @@
 			this.oBtnEdit = new sap.m.Button({
 				text: oBundle.getText("std.edit"),
 				icon: "sap-icon://edit",
-				press: oController.editButtonPress,
+				press: oController.editButtonPress.bind(oController),
 				visible: false
 			});
 			

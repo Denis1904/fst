@@ -119,11 +119,11 @@
 				labelFor: "shippAgreement"
 			});
 			
-			let oPayGuarantee = new sap.m.Switch({ state: "{/priceGuarantee}" });
+			let oPayGuarantee = new sap.m.Switch({ state: "{/payguarantee}" });
 			
 			let oPayGuaranteeLabel = new sap.m.Label({
-				text: "Preisgarantie",
-				labelFor: "priceGuarantee"
+				text: "Zahlungsgarantie",
+				labelFor: "payguarantee"
 			});
 			
 			let oContractStatus = new sap.m.Input({
