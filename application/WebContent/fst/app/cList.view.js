@@ -180,12 +180,12 @@
 			colItems.addCell(txtNAME7);
 			
 			let txtNAME8 = new sap.m.Text("txtNAME8", {
-				text: "{createdLastname}"
+				text: "{createdFirstname} {createdLastname}"
 			});
 			colItems.addCell(txtNAME8);
 			
 			let txtNAME9 = new sap.m.Text("txtNAME9", {
-				text: "{releasedLastname}"
+				text: "{releasedFirstname} {releasedLastname}"
 			});
 			colItems.addCell(txtNAME9);
 			
