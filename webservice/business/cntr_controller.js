@@ -104,6 +104,10 @@
 			return queries.getPayAgreements();
 		}
 
+		getShipAgreements() {
+			return queries.getShipAgreements();
+		}
+
 	}
 
 	module.exports = ContractController;

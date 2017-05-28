@@ -189,6 +189,15 @@
 				"name")
 			.from("payagreement")
 			.execute();
+	};
+
+	Queries.getShipAgreements = function () {
+		return db.queryBuilder()
+			.select(
+				"id",
+				"name")
+			.from("shippagreement")
+			.execute();
 	}
 
 	module.exports = Queries;

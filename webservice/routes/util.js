@@ -36,7 +36,14 @@
 			});
 		}
 		else if (oSearchHelp.id == "shippAgreement") {
-
+			oCntr.getShipAgreements().then(aData => {
+				res.send(aData.rows.map(e => {
+					return {
+						key: e.id,
+						value: e.name
+					};
+				}));
+			});
 		}
 	});
 })
