@@ -1,13 +1,13 @@
-(function() {
+(function () {
 	"use strict";
-	
+
 	const Queries = {};
-	
-	Queries.getTest = function() {
+
+	Queries.getTest = function () {
 		return db.queryBuilder().select("id", "name").from("test").execute();
 	};
-	
-	Queries.login = function(sUser, sHash) {
+
+	Queries.login = function (sUser, sHash) {
 		return new Promise((fnResolve, fnReject) => {
 			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
 				.from("person as u")
@@ -22,12 +22,12 @@
 					} else {
 						fnReject();
 					}
-					
+
 				});
 		});
 	};
-	
-	Queries.getUser = function(sUser) {
+
+	Queries.getUser = function (sUser) {
 		return new Promise((fnResolve, fnReject) => {
 			db.queryBuilder().select("u.id", "u.firstname", "u.lastname", "u.role")
 				.from("person as u")
@@ -40,20 +40,20 @@
 					} else {
 						fnReject();
 					}
-					
+
 				});
 		});
 	};
-	
-	Queries.deleteContract = function(sContractId) {
+
+	Queries.deleteContract = function (sContractId) {
 		return db.queryBuilder()
 			.delete("contract")
 			.where("contract.id = :id")
 			.setParameter(":id", sContractId)
 			.execute();
 	};
-	
-	Queries.getContract = function(sContractId) {
+
+	Queries.getContract = function (sContractId) {
 		return new Promise((fnResolve, fnReject) => {
 			if (!sContractId) {
 				fnReject();
@@ -93,12 +93,12 @@
 					oContract.rows[0].payguarantee = oContract.rows[0].payguarantee === "1";
 					fnResolve(oContract.rows[0]);
 				});
-			
+
 		});
-		
+
 	};
-	
-	Queries.getContracts = function() {
+
+	Queries.getContracts = function () {
 		return db.queryBuilder()
 			.select(
 				"contract.id",
@@ -129,6 +129,8 @@
 	
 	Queries.addContract = function(oContract) {
 		
+
+		
 		return db.queryBuilder()
 			.insert("contract")
 				.setValue("title", ":title")
@@ -150,10 +152,10 @@
 				.setParameter(":createdby", oContract.createdBy)
 				.setParameter(":releasedby", oContract.releasedBy)
 			.execute();
-		
+
 	};
-	
-	Queries.updateContract = function(oContract) {
+
+	Queries.updateContract = function (oContract) {
 		oContract.payguarantee = oContract.payguarantee ? "1" : "0";
 		return db.queryBuilder()
 			.update("contract")
@@ -179,7 +181,16 @@
 				.setParameter(":contractId", oContract.id)
 			.execute();
 	};
-	
+
+	Queries.getPayAgreements = function () {
+		return db.queryBuilder()
+			.select(
+				"id",
+				"name")
+			.from("payagreement")
+			.execute();
+	}
+
 	module.exports = Queries;
 })();
 

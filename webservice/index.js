@@ -51,7 +51,7 @@ app.use(basicAuth(function(username, password, fn) {
  *	Default: using 'accept-language' header to guess language settings
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 i18n.configure({
-	directory: "./webservice/i18n",
+	directory: "./i18n",
 	register: global,
 	defaultLocale: "en",
 	api: {
@@ -68,6 +68,7 @@ require("./routes/index");
 require("./routes/sayHello");
 require("./routes/user");
 require("./routes/contract");
+require("./routes/util");
 require("./routes/404"); // should be always at the end of routes require block
 
 

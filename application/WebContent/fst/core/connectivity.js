@@ -62,7 +62,7 @@
 	fst.core.connectivity.prototype.getContract = function (sId) {
 		return this.__loadData("getContract", oBundle.getText("contract.get"), {
 			sType: "POST",
-			oBody: { id: sId }
+			oBody: {id: sId}
 		});
 	};
 
@@ -104,5 +104,11 @@
 		});
 	};
 
+	fst.core.connectivity.prototype.getHelpData = function (sSearchId) {
+		return this.__loadData("getHelpData", oBundle.getText("contract.getHelpData"), {
+			sType: "POST",
+			oBody: {id: sSearchId}
+		});
+	};
 
 })();

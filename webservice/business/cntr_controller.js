@@ -1,23 +1,23 @@
-(function() {
+(function () {
 	"use strict";
-	
+
 	class ContractController {
 		constructor() {
 			this.Contract = require("./cntr");
 		}
-		
+
 		addContract(oContract) {
 			return new Promise(fnResolve => {
 				oContract.createdBy = uid;
 				queries.addContract(oContract).then(fnResolve);
 			});
 		}
-		
+
 		deleteContract(sContractId) {
 			return new Promise(fnResolve => {
-				
+
 				this.getContract(sContractId).then(oContract => {
-					
+
 					if (oContract.status === 1) {
 						queries.deleteContract(sContractId).then(oReturn => {
 							fnResolve(true);
@@ -29,24 +29,24 @@
 				});
 			});
 		}
-		
+
 		getContract(sContractId) {
 			return new Promise(fnResolve => {
-				
+
 				queries.getContract(sContractId).then(oContract => {
-					
+
 					if (oContract) {
 						fnResolve(new this.Contract(oContract));
 					} else {
 						fnResolve(null);
 					}
 				});
-				
+
 			});
-			
-			
+
+
 		}
-		
+
 		getAllowedStatus(sContractId) {
 			return [
 				{
@@ -67,18 +67,18 @@
 				}
 			];
 		}
-		
+
 		updateContract(oContract) {
 			return queries.updateContract(oContract);
 		}
-		
+
 		changeContractStatus(sContractId, sNewStatus) {
 			return new Promise(fnResolve => {
-				
+
 				this.getContract(sContractId).then(oContract => {
-					
+
 					const aReturn = [];
-					
+
 					if (oContract.getStatus().toString() === sNewStatus) {
 						let sDescr = __getText("contract.statusChangeNotAllowed.Descr", {
 							oldStatus: oContract.getStatus(),
@@ -90,18 +90,22 @@
 							type: "E"
 						});
 					}
-					
+
 					oContract.setStatus(sNewStatus);
 					this.updateContract(oContract);
-					
+
 					fnResolve(aReturn);
-					
+
 				});
 			});
 		}
-		
+
+		getPayAgreements() {
+			return queries.getPayAgreements();
+		}
+
 	}
-	
+
 	module.exports = ContractController;
-	
+
 })();
