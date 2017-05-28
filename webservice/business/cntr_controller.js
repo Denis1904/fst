@@ -69,6 +69,12 @@
 		}
 
 		updateContract(oContract) {
+			if (oContract.status === "3") { // contract active
+				oContract.releasedBy = uid;
+			} else if (["1", "2"].indexOf(oContract.status) !== -1) { // contract new or in approval
+				oContract.releasedBy = null;
+			}
+			
 			return queries.updateContract(oContract);
 		}
 

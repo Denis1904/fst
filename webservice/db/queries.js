@@ -156,7 +156,6 @@
 	};
 
 	Queries.updateContract = function (oContract) {
-		oContract.payguarantee = oContract.payguarantee ? "1" : "0";
 		return db.queryBuilder()
 			.update("contract")
 				.set("title", ":title")
