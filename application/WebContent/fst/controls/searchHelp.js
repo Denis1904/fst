@@ -33,7 +33,7 @@ sap.ui.define(
 						Connectivity.getHelpData(this.getSearchHelpName()).then(aResponse => {
 
 							new sap.m.Dialog({
-								title: "hallo",
+								title: "Suchhilfe",
 								rightButton: new sap.m.Button({
 									text: "Close",
 									press: oEvent => {

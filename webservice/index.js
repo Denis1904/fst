@@ -51,7 +51,7 @@ app.use(basicAuth(function(username, password, fn) {
  *	Default: using 'accept-language' header to guess language settings
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 i18n.configure({
-	directory: "./i18n",
+	directory: "./webservice/i18n",
 	register: global,
 	defaultLocale: "en",
 	api: {
