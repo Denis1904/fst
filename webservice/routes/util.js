@@ -45,6 +45,16 @@
 				}));
 			});
 		}
+		else if (oSearchHelp.id == "vendor") {
+			oCntr.getVendors().then( aData => {
+				res.send(aData.rows.map(e => {
+					return {
+						key: e.id,
+						value: e.name
+					};
+				}));
+			});
+		}
 	});
 })
 ();

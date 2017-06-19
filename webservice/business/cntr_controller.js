@@ -46,6 +46,10 @@
 
 
 		}
+		
+		getVendors() {
+			return queries.getVendor();
+		}
 
 		getAllowedStatus(sContractId) {
 			return [
