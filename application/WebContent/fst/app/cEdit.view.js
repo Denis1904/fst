@@ -151,7 +151,7 @@
 			let oPayGuarantee = new sap.m.Switch({ state: "{/payguarantee}" });
 			
 			let oPayGuaranteeLabel = new sap.m.Label({
-				text: "Zahlungsgarantie",
+				text: "Preisgarantie",
 				labelFor: "payguarantee"
 			});
 			

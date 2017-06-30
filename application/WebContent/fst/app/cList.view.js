@@ -93,7 +93,7 @@
 			
 			let col06 = new sap.m.Column("col06", {
 				header: new sap.m.Label({
-					text: "Zahlungsgarantie"
+					text: "Preisgarantie"
 				})
 			});
 			this.oTable.addColumn(col06);
